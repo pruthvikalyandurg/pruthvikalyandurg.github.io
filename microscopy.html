@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microscopy Gallery — Dr. Pruthvi Kalyandurg</title>
+  <meta name="description" content="Fluorescence, confocal, and histology microscopy images from peer-reviewed plant science research by Dr. Pruthvi Kalyandurg.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .micro-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.5rem; }
+    .micro-item { border-radius:var(--r-md); overflow:hidden; background:var(--surface); border:1px solid var(--border); transition:box-shadow .2s; }
+    .micro-item:hover { box-shadow:var(--sh-lg); }
+    .micro-img { aspect-ratio:4/3; overflow:hidden; cursor:pointer; }
+    .micro-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .micro-item:hover .micro-img img { transform:scale(1.04); }
+    .micro-info { padding:1.25rem 1.4rem; }
+    .micro-tech { display:inline-block; background:var(--primary-light); color:var(--primary); padding:3px 10px; border-radius:999px; font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-bottom:.6rem; }
+    .micro-title { font-weight:700; font-size:.97rem; margin-bottom:.4rem; line-height:1.35; }
+    .micro-caption { font-size:.83rem; color:var(--muted); line-height:1.6; margin-bottom:.6rem; }
+    .micro-pub { font-size:.78rem; color:var(--accent); font-style:italic; }
+    .micro-pub a { color:var(--accent); }
+    .micro-pub a:hover { text-decoration:underline; }
+    .upload-placeholder { border-radius:var(--r-md); border:2px dashed rgba(45,122,79,.3); background:var(--primary-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; padding:3rem; text-align:center; color:var(--muted); }
+    .upload-placeholder .icon { font-size:2.5rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Pruthvi Kalyandurg, PhD<sub>Plant Scientist &amp; Entrepreneur</sub></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="microscopy.html" class="active">Microscopy</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="startup.html">Startup</a></li>
+    </ul>
+    <div class="nav-right">
+      
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="about.html">About</a>
+  <a href="publications.html">Publications</a>
+  <a href="microscopy.html" class="active">Microscopy</a>
+  <a href="photography.html">Photography</a>
+  <a href="learn.html">Learn</a>
+  <a href="startup.html">Startup</a>
+
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">Visual Science</div>
+    <h1 class="page-hero-title">Microscopy Gallery</h1>
+    <p class="page-hero-sub">Science made visible — fluorescence, confocal, and histological images from decade of plant science research. Each image tells a biological story.</p>
+    <blockquote style="margin:2rem auto 0;max-width:620px;font-family:var(--serif);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.65;border-left:3px solid rgba(255,255,255,.4);padding-left:1.25rem;text-align:left">
+      "The painter imagines a masterpiece into existence. The microscopist simply learns to see one that was always there."
+    </blockquote>
+  </div>
+</div>
+
+<!-- Technique key -->
+<section class="section section-alt" style="padding:2rem 2rem">
+  <div class="section-inner">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center">
+      <span style="font-size:.82rem;font-weight:700;color:var(--muted);margin-right:.25rem">Techniques:</span>
+      <span class="badge-pill" style="font-size:.76rem">🟢 Confocal Fluorescence</span>
+      <span class="badge-pill" style="font-size:.76rem">🔵 Wide-field Fluorescence</span>
+      <span class="badge-pill" style="font-size:.76rem">🟣 Histology / Bright-field</span>
+      <span class="badge-pill" style="font-size:.76rem">🟠 Published Images</span>
+      <span class="badge-pill" style="font-size:.76rem">⬜ Unpublished</span>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">From Published Research</div>
+    <h2 class="section-title">Research Images</h2>
+    <p class="section-sub">All images are from peer-reviewed publications. Click any image to enlarge.</p>
+
+    <div class="micro-grid fade-in">
+
+      <!-- Image 1 — APS/Phytopathology SIGS -->
+      <div class="micro-item">
+        <div class="micro-img" onclick="openLightbox('https://apsjournals.apsnet.org/cms/10.1094/PHYTO-02-21-0054-SC/asset/images/large/phyto-02-21-0054-scf1-1641541996666.jpeg', 'Phytophthora infestans sporulation on dsRNA-treated vs untreated potato leaves — Spray-Induced Gene Silencing study')">
+          <img src="https://apsjournals.apsnet.org/cms/10.1094/PHYTO-02-21-0054-SC/asset/images/large/phyto-02-21-0054-scf1-1641541996666.jpeg" alt="SIGS — Phytophthora infestans on potato leaf" loading="lazy">
+        </div>
+        <div class="micro-info">
+          <span class="micro-tech">🟠 Published · Bright-field</span>
+          <div class="micro-title">Potato Late Blight — dsRNA SIGS Treatment</div>
+          <p class="micro-caption">
+            Potato leaves infected with <em>Phytophthora infestans</em> — the pathogen responsible for the Irish Potato Famine — comparing disease progression in control vs. dsRNA-sprayed plants. This image is from the landmark SIGS study demonstrating biological disease control without fungicides.
+          </p>
+          <div class="micro-pub">
+            <a href="https://doi.org/10.1094/PHYTO-02-21-0054-SC" target="_blank" rel="noopener">Kalyandurg PB et al., Phytopathology 2021 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image 2 — Wiley/PBI Confocal -->
+      <div class="micro-item">
+        <div class="micro-img" onclick="openLightbox('https://onlinelibrary.wiley.com/cms/asset/a56c7fe3-2de9-46bb-80d6-17c2e691150e/pbi70339-fig-0004-m.jpg', 'Confocal fluorescence microscopy: Cyprosin B subcellular localisation in Nicotiana benthamiana leaf cells')">
+          <img src="https://onlinelibrary.wiley.com/cms/asset/a56c7fe3-2de9-46bb-80d6-17c2e691150e/pbi70339-fig-0004-m.jpg" alt="Confocal fluorescence — Cyprosin B localisation" loading="lazy">
+        </div>
+        <div class="micro-info">
+          <span class="micro-tech">🟢 Published · Confocal Fluorescence</span>
+          <div class="micro-title">Cyprosin B Subcellular Localisation</div>
+          <p class="micro-caption">
+            Confocal fluorescence microscopy of <em>Nicotiana benthamiana</em> leaf epidermal cells expressing GFP-tagged Cyprosin B variants. Reveals vacuolar targeting and endocytic vesicle localisation mediated by the Plant-Specific Insert (PSI) domain — with direct implications for plant-based protein production systems.
+          </p>
+          <div class="micro-pub">
+            <a href="https://doi.org/10.1111/pbi.70339" target="_blank" rel="noopener">Muthusamy S, Kalyandurg PB et al., Plant Biotechnol. J. 2025 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image 3 — Wix confocal (unpublished/general) -->
+      <div class="micro-item">
+        <div class="micro-img" onclick="openLightbox('https://static.wixstatic.com/media/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png/v1/fill/w_1344,h_1044,al_c,q_90,enc_avif,quality_auto/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png', 'Confocal fluorescence imaging of plant cell structures during pathogen interaction — SLU research')">
+          <img src="https://static.wixstatic.com/media/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png/v1/fill/w_1344,h_1044,al_c,q_90,enc_avif,quality_auto/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png" alt="Confocal plant pathogen interaction" loading="lazy">
+        </div>
+        <div class="micro-info">
+          <span class="micro-tech">🟢 Confocal Fluorescence</span>
+          <div class="micro-title">Plant-Pathogen Interaction — Cellular Imaging</div>
+          <p class="micro-caption">
+            Fluorescence confocal microscopy imaging of plant cells during host-pathogen interaction. This type of imaging reveals how pathogens reorganise plant cell architecture — including plasmodesmata, vacuoles, and microtubule networks — to facilitate infection.
+          </p>
+          <div class="micro-pub">SLU Alnarp Research — Plant Breeding Dept.</div>
+        </div>
+      </div>
+
+      <!-- Placeholder for user-uploaded images -->
+      <div class="upload-placeholder">
+        <div class="icon">🔬</div>
+        <div style="font-weight:700;color:var(--primary)">More Images Coming Soon</div>
+        <p style="font-size:.85rem;line-height:1.6">Additional unpublished microscopy images will be added here — fluorescence, confocal, and histology from ongoing research.</p>
+      </div>
+
+    </div><!-- /.micro-grid -->
+  </div>
+</section>
+
+<!-- What you see explained -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">How to Read These Images</h2>
+    <p class="section-sub">Not a microscopist? Here is a quick guide to what you are seeing.</p>
+
+    <div class="grid-3 fade-in">
+      <div class="card">
+        <div class="card-tag">Technique</div>
+        <div class="card-title">Confocal Fluorescence Microscopy</div>
+        <p class="card-text">Uses laser light to excite fluorescent tags attached to specific proteins. Different colours = different proteins. Allows 3D imaging of single cells with extraordinary resolution. Used to track where proteins go inside cells.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">What to look for</div>
+        <div class="card-title">Colour Channels</div>
+        <p class="card-text">Green often indicates GFP (Green Fluorescent Protein) tagging. Red/magenta can mark membranes, nuclei, or separate proteins. Overlapping colours (yellow) show where two proteins co-localise — often meaning they interact.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Why it matters</div>
+        <div class="card-title">Seeing the Invisible</div>
+        <p class="card-text">Cells are ~10–50 micrometres across — invisible to the naked eye. Microscopy turns these invisible battles between plant and pathogen into something we can see, measure, and understand — driving the science behind sustainable crop protection.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="learn.html#microscopy" class="btn-secondary">Learn More About Microscopy in Plant Science →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:1.5rem" onclick="closeLightbox()">
+  <div onclick="event.stopPropagation()" style="max-width:920px;width:100%">
+    <img src="" alt="" style="width:100%;border-radius:8px;max-height:82vh;object-fit:contain">
+    <p class="lb-caption" style="color:rgba(255,255,255,.7);font-size:.85rem;margin-top:.75rem;text-align:center;line-height:1.5"></p>
+    <button onclick="closeLightbox()" style="position:fixed;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer">✕</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Pruthvi Kalyandurg</div>
+        <p class="footer-brand-tagline">Plant scientist, entrepreneur, and photographer based in Uppsala, Sweden.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">in</a>
+          <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">GS</a>
+          <a href="https://www.instagram.com/pruthvikalyandurg/" target="_blank" rel="noopener">📷</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="photography.html">Photography</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">More</div>
+        <ul class="footer-links">
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="startup.html">Startup</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">External</div>
+        <ul class="footer-links">
+          <li><a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a></li>
+          <li><a href="https://www.researchgate.net/profile/Pruthvi_Kalyandurg" target="_blank" rel="noopener">ResearchGate ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Pruthvi Kalyandurg</span>
+      <span style="opacity:.4">Science × Nature × Innovation</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

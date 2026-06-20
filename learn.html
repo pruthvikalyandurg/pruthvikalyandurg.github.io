@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn — Plant Science Explained | Dr. Pruthvi Kalyandurg</title>
+  <meta name="description" content="Plain-language articles on plant pathology, RNA interference, microscopy, and why plant diseases matter for global food security.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .article-section { max-width: 760px; }
+    .article-section h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; color: var(--text); }
+    .article-section p { font-size: 1rem; line-height: 1.85; color: var(--text); opacity: .88; margin-bottom: 1.25rem; }
+    .article-section em { color: var(--primary); font-style: italic; }
+    .article-section .callout { background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 var(--r-sm) var(--r-sm) 0; padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: .93rem; }
+    .article-section .callout strong { color: var(--primary); }
+    .article-anchor { display: block; position: relative; top: -80px; visibility: hidden; }
+    .article-nav { display: flex; flex-direction: column; gap: .5rem; position: sticky; top: calc(var(--nav-h) + 1.5rem); }
+    .article-nav a { font-size: .85rem; font-weight: 600; color: var(--muted); padding: .5rem .75rem; border-radius: var(--r-sm); transition: all .15s; border-left: 2px solid transparent; }
+    .article-nav a:hover { color: var(--primary); background: var(--primary-light); border-left-color: var(--primary); }
+    .article-nav .nav-title { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .25rem; opacity: .6; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Pruthvi Kalyandurg, PhD<sub>Plant Scientist &amp; Entrepreneur</sub></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="microscopy.html">Microscopy</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="learn.html" class="active">Learn</a></li>
+      <li><a href="startup.html">Startup</a></li>
+    </ul>
+    <div class="nav-right">
+      
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="about.html">About</a>
+  <a href="publications.html">Publications</a>
+  <a href="microscopy.html">Microscopy</a>
+  <a href="photography.html">Photography</a>
+  <a href="learn.html" class="active">Learn</a>
+  <a href="startup.html">Startup</a>
+
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">Science Education</div>
+    <h1 class="page-hero-title">Learn Plant Science</h1>
+    <p class="page-hero-sub">Short, clear articles on plant pathology, RNA biology, microscopy, and why plants matter for our food, our climate, and our future.</p>
+  </div>
+</div>
+
+<!-- Article index cards -->
+<section class="section section-alt" style="padding:2.5rem 2rem">
+  <div class="section-inner">
+    <div class="grid-3 fade-in">
+      <a href="#pathology" class="learn-card" style="text-decoration:none;color:inherit">
+        <div class="learn-header lh-pathology"><h3>What is Plant Pathology?</h3></div>
+        <div class="learn-body"><span class="learn-category">Plant Pathology</span><p>Why plants get sick and why it matters for your food.</p></div>
+      </a>
+      <a href="#rnai" class="learn-card" style="text-decoration:none;color:inherit">
+        <div class="learn-header lh-rna"><h3>What is RNA Interference?</h3></div>
+        <div class="learn-body"><span class="learn-category">RNA Biology</span><p>The natural gene-silencing mechanism revolutionising agriculture.</p></div>
+      </a>
+      <a href="#microscopy" class="learn-card" style="text-decoration:none;color:inherit">
+        <div class="learn-header lh-microscopy"><h3>Microscopy in Plant Science</h3></div>
+        <div class="learn-body"><span class="learn-category">Microscopy</span><p>How imaging the invisible drives biological discovery.</p></div>
+      </a>
+      <a href="#food-security" class="learn-card" style="text-decoration:none;color:inherit">
+        <div class="learn-header lh-food"><h3>Plant Diseases &amp; Food Security</h3></div>
+        <div class="learn-body"><span class="learn-category">Global Impact</span><p>From the Irish Famine to modern food crises — pathogens that changed history.</p></div>
+      </a>
+      <a href="#biocontrol" class="learn-card" style="text-decoration:none;color:inherit">
+        <div class="learn-header lh-biocontrol"><h3>Biological Control of Plant Diseases</h3></div>
+        <div class="learn-body"><span class="learn-category">Biocontrol</span><p>Fighting pathogens with nature — without chemicals.</p></div>
+      </a>
+      <a href="#development" class="learn-card" style="text-decoration:none;color:inherit">
+        <div class="learn-header lh-develop"><h3>How Plants Develop</h3></div>
+        <div class="learn-body"><span class="learn-category">Plant Biology</span><p>From seed to leaf — the hormonal signals that shape plant architecture.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FULL ARTICLES -->
+<section class="section">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 260px;gap:4rem;align-items:start">
+
+      <!-- Articles column -->
+      <div>
+
+        <!-- Article 1: Plant Pathology -->
+        <span class="article-anchor" id="pathology"></span>
+        <div style="border-bottom:1px solid var(--border);padding-bottom:3.5rem;margin-bottom:3.5rem" class="fade-in">
+          <span class="category-label" style="background:var(--primary-light);color:var(--primary);display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:700;margin-bottom:1rem">🌱 Plant Pathology</span>
+          <h2 class="section-title" style="margin-bottom:1.5rem">What is Plant Pathology?</h2>
+          <div class="article-section">
+            <p>Plants, like animals, get sick. They are infected by bacteria, fungi, viruses, oomycetes, nematodes, and parasitic plants. The science of understanding, diagnosing, and managing these diseases is called <em>plant pathology</em>.</p>
+            <p>Plant diseases are not a modern problem. They have shaped human history. The <em>Phytophthora infestans</em> oomycete — often called a "water mould" — caused the Irish Potato Famine of 1845–1852, killing approximately one million people and forcing another million to emigrate. Today, this same organism still destroys around 10–15% of global potato harvests each year.</p>
+            <div class="callout"><strong>Key fact:</strong> Plant pathogens destroy an estimated 20–40% of global food crops annually, costing the world economy over $220 billion per year.</div>
+            <h3>What causes plant diseases?</h3>
+            <p>Pathogens enter plants through wounds, stomata (tiny pores on leaves), or by being injected by insect vectors like aphids. Once inside, they hijack the plant's cellular machinery — redirecting nutrients, suppressing immunity, and producing enzymes that break down plant tissue.</p>
+            <p>Fungi like <em>Botrytis cinerea</em> (grey mould) are opportunistic, attacking weakened or damaged tissues. Others, like <em>Phytophthora</em>, are highly specialised and aggressive — capable of destroying entire fields within days under the right conditions.</p>
+            <h3>What do plant pathologists actually do?</h3>
+            <p>My own career is a good example. As a plant pathologist, I have studied how viruses like <em>Potato mop-top virus</em> move between cells and suppress the plant's immune system. I have also pioneered the use of spray-induced gene silencing (SIGS) — a technology that uses RNA molecules to switch off pathogen genes and stop infection before it starts.</p>
+            <p>Today, as CTO of a biotech startup, I am applying this science to real-world post-harvest problems — protecting cut flowers and fresh produce from fungal disease without harmful chemicals.</p>
+          </div>
+        </div>
+
+        <!-- Article 2: RNAi -->
+        <span class="article-anchor" id="rnai"></span>
+        <div style="border-bottom:1px solid var(--border);padding-bottom:3.5rem;margin-bottom:3.5rem" class="fade-in">
+          <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:700;margin-bottom:1rem;background:#DBEAFE;color:#1E40AF">🧬 RNA Biology</span>
+          <h2 class="section-title" style="margin-bottom:1.5rem">What is RNA Interference (RNAi)?</h2>
+          <div class="article-section">
+            <p>Every living cell uses a language written in molecules — DNA stores the instructions, RNA carries them, and proteins execute them. RNA interference (RNAi) is a natural cellular mechanism that intercepts and silences RNA messages before they can be executed — effectively switching off specific genes.</p>
+            <p>RNAi was discovered in 1998 by Andrew Fire and Craig Mello, who won the Nobel Prize in Physiology or Medicine for it in 2006. The discovery was revolutionary: it revealed that small RNA molecules — not proteins — could be the key regulators of gene expression in all living things.</p>
+            <div class="callout"><strong>The mechanism:</strong> Double-stranded RNA (dsRNA) is detected inside the cell and cut into short fragments (~21 nucleotides) by an enzyme called Dicer. These small RNAs guide a molecular "scissors" complex (RISC) to matching RNA sequences and destroy them — silencing that gene.</div>
+            <h3>RNAi in crop protection</h3>
+            <p>My research at SLU Alnarp focused on a technology called <em>Spray-Induced Gene Silencing</em> (SIGS). The idea: if we design dsRNA molecules that match essential genes in a pathogen, and spray them onto plant surfaces, the pathogen will absorb those RNA molecules and accidentally silence its own critical genes — stopping infection.</p>
+            <p>In our 2021 <em>Phytopathology</em> paper, we showed for the first time that SIGS can reduce <em>Phytophthora infestans</em> infection by targeting genes essential for its pathogenicity. This is a landmark result because it suggests we could protect crops from disease with RNA — a biological molecule that leaves no chemical residue and breaks down harmlessly in the environment.</p>
+            <h3>Why this matters for the future of agriculture</h3>
+            <p>Conventional fungicides are increasingly failing as pathogens evolve resistance. Regulatory pressure is reducing the number of approved chemicals. SIGS-based crop protection could offer a highly specific, sustainable, and environmentally safe alternative — one that works at the genetic level, targeting only the pathogen you want to stop.</p>
+          </div>
+        </div>
+
+        <!-- Article 3: Microscopy -->
+        <span class="article-anchor" id="microscopy"></span>
+        <div style="border-bottom:1px solid var(--border);padding-bottom:3.5rem;margin-bottom:3.5rem" class="fade-in">
+          <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:700;margin-bottom:1rem;background:#F3E8FF;color:#6B21A8">🔬 Microscopy</span>
+          <h2 class="section-title" style="margin-bottom:1.5rem">Why Microscopy Matters in Plant Science</h2>
+          <div class="article-section">
+            <p>A plant cell is roughly 10–100 micrometres across — far too small to see without magnification. But inside that tiny space, extraordinary events unfold: viruses hijack ribosomes, fungi push through cell walls, and hormonal signals redirect the entire developmental programme of a shoot.</p>
+            <p>Microscopy is the technology that makes the invisible visible. Without it, plant science would remain largely theoretical. With it, we can watch pathogens invade in real time, track where proteins move inside living cells, and see how a single gene mutation changes the architecture of an entire root system.</p>
+            <h3>Types of microscopy I use in my research</h3>
+            <p><strong>Confocal fluorescence microscopy</strong> is my main tool. It uses laser light to excite fluorescent molecules (like GFP, the Green Fluorescent Protein) attached to specific proteins. By tagging different proteins with different colours, I can see exactly where they are inside a cell and whether they interact with each other.</p>
+            <p>In my research on <em>Potato mop-top virus</em>, confocal microscopy was essential for showing how the viral movement protein TGB1 interacts with the plant protein HIPP26 at the plasma membrane and microtubules — redirecting it to the nucleus to facilitate long-distance virus spread.</p>
+            <div class="callout"><strong>Cool fact:</strong> The GFP gene used to make proteins glow green was originally isolated from a jellyfish (<em>Aequorea victoria</em>). It is now one of the most widely used tools in all of biology.</div>
+            <h3>Microscopy as visual storytelling</h3>
+            <p>There is also an aesthetic dimension to microscopy. A confocal image of a plant cell — showing cytoplasmic strands highlighted in green, a glowing nucleus, and fluorescent protein clusters at the cell membrane — is genuinely beautiful. Science and art are not opposites; they are both about seeing clearly and sharing what you see.</p>
+          </div>
+        </div>
+
+        <!-- Article 4: Food Security -->
+        <span class="article-anchor" id="food-security"></span>
+        <div style="border-bottom:1px solid var(--border);padding-bottom:3.5rem;margin-bottom:3.5rem" class="fade-in">
+          <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:700;margin-bottom:1rem;background:#FEF3C7;color:#92400E">🌾 Global Impact</span>
+          <h2 class="section-title" style="margin-bottom:1.5rem">Plant Diseases and Global Food Security</h2>
+          <div class="article-section">
+            <p>Every year, plant diseases destroy enough food to feed hundreds of millions of people. This is not a hypothetical future problem — it is happening now. And as climate change shifts temperatures and rainfall patterns, many pathogens are expanding into regions where they have never been seen before.</p>
+            <p>The Irish Potato Famine is the most famous example of what happens when a crop meets a pathogen it cannot resist. In 1845, <em>Phytophthora infestans</em> arrived in Ireland — a population dependent on the potato as its primary food source. Within two years, the harvest had collapsed. The consequences — famine, mass death, emigration — reshaped the demographics of an entire nation.</p>
+            <div class="callout"><strong>Today's scale:</strong> Post-harvest losses — including disease in storage and transit — account for 30–40% of food loss in developing countries. For cut flowers, the figure can reach 40–50% of supply chain value.</div>
+            <h3>The pathogens that keep scientists awake at night</h3>
+            <p><em>Phytophthora infestans</em> (potato late blight) still destroys an estimated $6–7 billion in potato crops annually. <em>Botrytis cinerea</em> (grey mould) attacks strawberries, grapes, tomatoes, and cut flowers, costing the global economy billions each year. Wheat stem rust, citrus greening, banana Fusarium wilt — the list goes on.</p>
+            <h3>What can science do?</h3>
+            <p>Resistance breeding, chemical control, biological control, and RNA-based technologies all have roles to play. No single approach is sufficient. My own work focuses on biological and RNA-based solutions — technologies that work with nature rather than against it, leaving no chemical residue and reducing the risk of resistance evolution.</p>
+          </div>
+        </div>
+
+        <!-- Articles 5 & 6: condensed -->
+        <span class="article-anchor" id="biocontrol"></span>
+        <div style="border-bottom:1px solid var(--border);padding-bottom:3.5rem;margin-bottom:3.5rem" class="fade-in">
+          <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:700;margin-bottom:1rem;background:#DCFCE7;color:#166534">🌿 Biocontrol</span>
+          <h2 class="section-title" style="margin-bottom:1.5rem">Biological Control of Plant Diseases</h2>
+          <div class="article-section">
+            <p>For every plant pathogen, there is often a natural enemy — a predatory fungus, a beneficial bacterium, or a competing organism that keeps the pathogen in check. Biocontrol is the science of finding and deploying these natural enemies as alternatives to synthetic chemicals.</p>
+            <p>My research at SLU included studying <em>Clonostachys rosea</em>, a biocontrol fungus that parasitises plant pathogens. We showed that RNA interference — and particularly cross-kingdom sRNA signalling — plays a crucial role in how <em>C. rosea</em> communicates with wheat roots and suppresses pathogens.</p>
+            <p>We also characterised beneficial bacteria like <em>Pseudomonas fluorescens</em> SLU99, which promotes plant growth and protects against disease by colonising roots and producing antimicrobial compounds. Understanding how these organisms work at the molecular level is key to deploying them reliably and effectively in agriculture.</p>
+          </div>
+        </div>
+
+        <span class="article-anchor" id="development"></span>
+        <div class="fade-in">
+          <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:700;margin-bottom:1rem;background:#CCFBF1;color:#0F766E">🌱 Plant Biology</span>
+          <h2 class="section-title" style="margin-bottom:1.5rem">How Plants Develop</h2>
+          <div class="article-section">
+            <p>Plants are not passive organisms. They are exquisitely responsive systems — constantly monitoring light, temperature, gravity, touch, and chemical signals, and adjusting their growth accordingly.</p>
+            <p>My MSc thesis investigated how the plant hormone <em>abscisic acid</em> (ABA) influences root vascular development in <em>Arabidopsis thaliana</em> — the model plant of biology. ABA is best known as the stress hormone (it triggers stomata to close during drought), but our work showed it also plays a subtle, cross-talking role in coordinating the hormonal networks that specify which cells become xylem and which become phloem in the root.</p>
+            <p>Understanding development matters for agriculture: the architecture of a plant's root system determines how efficiently it extracts water and nutrients from soil. Plants with better root systems survive drought better, resist some pathogens more effectively, and ultimately yield more food.</p>
+          </div>
+        </div>
+
+      </div><!-- /articles column -->
+
+      <!-- Sidebar nav (desktop only) -->
+      <div style="display:none" class="desktop-sidebar"><!-- shown via media query --></div>
+      <div>
+        <div class="article-nav" style="padding:1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md)">
+          <div class="nav-title">Articles on This Page</div>
+          <a href="#pathology">🌱 Plant Pathology</a>
+          <a href="#rnai">🧬 RNA Interference</a>
+          <a href="#microscopy">🔬 Microscopy</a>
+          <a href="#food-security">🌾 Food Security</a>
+          <a href="#biocontrol">🌿 Biocontrol</a>
+          <a href="#development">🌱 Plant Development</a>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Pruthvi Kalyandurg</div>
+        <p class="footer-brand-tagline">Plant scientist, entrepreneur, and photographer based in Uppsala, Sweden.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">in</a>
+          <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">GS</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="microscopy.html">Microscopy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">More</div>
+        <ul class="footer-links">
+          <li><a href="photography.html">Photography</a></li>
+          <li><a href="startup.html">Startup</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Topics</div>
+        <ul class="footer-links">
+          <li><a href="#pathology">Plant Pathology</a></li>
+          <li><a href="#rnai">RNA Interference</a></li>
+          <li><a href="#microscopy">Microscopy</a></li>
+          <li><a href="#food-security">Food Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Pruthvi Kalyandurg</span>
+      <span style="opacity:.4">Science × Nature × Innovation</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

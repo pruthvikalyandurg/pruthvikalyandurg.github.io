@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>సూక్ష్మదర్శిని గ్యాలరీ — డా. ప్రుత్వి కళ్యాండుర్గ్</title>
+  <meta name="description" content="సమీక్షించిన వృక్ష శాస్త్ర పరిశోధన నుండి ఫ్లోరోసెన్స్, కన్‌ఫోకల్ మరియు హిస్టాలజీ సూక్ష్మదర్శిని చిత్రాలు.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .micro-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.5rem; }
+    .micro-item { border-radius:var(--r-md); overflow:hidden; background:var(--surface); border:1px solid var(--border); transition:box-shadow .2s; }
+    .micro-item:hover { box-shadow:var(--sh-lg); }
+    .micro-img { aspect-ratio:4/3; overflow:hidden; cursor:pointer; }
+    .micro-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .micro-item:hover .micro-img img { transform:scale(1.04); }
+    .micro-info { padding:1.25rem 1.4rem; }
+    .micro-tech { display:inline-block; background:var(--primary-light); color:var(--primary); padding:3px 10px; border-radius:999px; font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-bottom:.6rem; }
+    .micro-title { font-weight:700; font-size:.97rem; margin-bottom:.4rem; line-height:1.35; }
+    .micro-caption { font-size:.83rem; color:var(--muted); line-height:1.6; margin-bottom:.6rem; }
+    .micro-pub { font-size:.78rem; color:var(--accent); font-style:italic; }
+    .micro-pub a { color:var(--accent); }
+    .micro-pub a:hover { text-decoration:underline; }
+    .upload-placeholder { border-radius:var(--r-md); border:2px dashed rgba(45,122,79,.3); background:var(--primary-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; padding:3rem; text-align:center; color:var(--muted); }
+    .upload-placeholder .icon { font-size:2.5rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-te.html" class="nav-logo">ప్రుత్వి కళ్యాండుర్గ్<sub>PhD · వృక్ష శాస్త్రవేత్త & వ్యవస్థాపకుడు</sub></a>
+    <ul class="nav-links">
+      <li><a href="about-te.html">నా గురించి</a></li>
+      <li><a href="publications-te.html">ప్రచురణలు</a></li>
+      <li><a href="microscopy-te.html" class="active">సూక్ష్మదర్శిని</a></li>
+      <li><a href="photography-te.html">ఫోటోగ్రఫీ</a></li>
+      <li><a href="learn-te.html">నేర్చుకోండి</a></li>
+      <li><a href="startup-te.html">స్టార్టప్</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="microscopy.html" class="lang-toggle"><span class="globe">🌐</span> English</a>
+      <button class="nav-hamburger" aria-label="మెనూ తెరవండి"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="about-te.html">నా గురించి</a>
+  <a href="publications-te.html">ప్రచురణలు</a>
+  <a href="microscopy-te.html" class="active">సూక్ష్మదర్శిని</a>
+  <a href="photography-te.html">ఫోటోగ్రఫీ</a>
+  <a href="learn-te.html">నేర్చుకోండి</a>
+  <a href="startup-te.html">స్టార్టప్</a>
+  <a href="microscopy.html" class="lang-toggle">🌐 English</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">దృశ్య శాస్త్రం</div>
+    <h1 class="page-hero-title">సూక్ష్మదర్శిని గ్యాలరీ</h1>
+    <p class="page-hero-sub">శాస్త్రం దృశ్యమానమైంది — వృక్ష శాస్త్ర పరిశోధన నుండి ఫ్లోరోసెన్స్, కన్‌ఫోకల్ మరియు హిస్టాలజీ చిత్రాలు. ప్రతి చిత్రం ఒక జీవ కథ చెప్తుంది.</p>
+  </div>
+</div>
+
+<!-- Technique key -->
+<section class="section section-alt" style="padding:2rem 2rem">
+  <div class="section-inner">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center">
+      <span style="font-size:.82rem;font-weight:700;color:var(--muted);margin-right:.25rem">సాంకేతికతలు:</span>
+      <span class="badge-pill" style="font-size:.76rem">🟢 కన్‌ఫోకల్ ఫ్లోరోసెన్స్</span>
+      <span class="badge-pill" style="font-size:.76rem">🔵 వైడ్-ఫీల్డ్ ఫ్లోరోసెన్స్</span>
+      <span class="badge-pill" style="font-size:.76rem">🟣 హిస్టాలజీ / బ్రైట్-ఫీల్డ్</span>
+      <span class="badge-pill" style="font-size:.76rem">🟠 ప్రచురితం</span>
+      <span class="badge-pill" style="font-size:.76rem">⬜ అప్రచురితం</span>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">ప్రచురితమైన పరిశోధన నుండి</div>
+    <h2 class="section-title">పరిశోధన చిత్రాలు</h2>
+    <p class="section-sub">అన్ని చిత్రాలు సమీక్షించిన ప్రచురణల నుండి. పెద్దగా చూడడానికి క్లిక్ చేయండి.</p>
+
+    <div class="micro-grid fade-in">
+
+      <div class="micro-item">
+        <div class="micro-img" onclick="openLightbox('https://apsjournals.apsnet.org/cms/10.1094/PHYTO-02-21-0054-SC/asset/images/large/phyto-02-21-0054-scf1-1641541996666.jpeg', 'dsRNA-చికిత్సిత vs చికిత్సించని బంగాళదుంప ఆకులపై Phytophthora infestans స్పోరులేషన్ — SIGS అధ్యయనం')">
+          <img src="https://apsjournals.apsnet.org/cms/10.1094/PHYTO-02-21-0054-SC/asset/images/large/phyto-02-21-0054-scf1-1641541996666.jpeg" alt="SIGS — బంగాళదుంప ఆకుపై Phytophthora infestans" loading="lazy">
+        </div>
+        <div class="micro-info">
+          <span class="micro-tech">🟠 ప్రచురితం · బ్రైట్-ఫీల్డ్</span>
+          <div class="micro-title">బంగాళదుంప లేట్ బ్లైట్ — dsRNA SIGS చికిత్స</div>
+          <p class="micro-caption">
+            ఐరిష్ బంగాళదుంప కరవుకు కారణమైన <em>Phytophthora infestans</em> తో సంక్రమించిన బంగాళదుంప ఆకులు — నియంత్రణ vs dsRNA-స్ప్రే మొక్కలలో వ్యాధి పురోగతిని పోల్చిచూపిస్తున్నాయి. శిలీంధ్రనాశకాలు లేకుండా జీవ రక్షణను నిరూపించిన మైలురాయి SIGS అధ్యయనం.
+          </p>
+          <div class="micro-pub">
+            <a href="https://doi.org/10.1094/PHYTO-02-21-0054-SC" target="_blank" rel="noopener">Kalyandurg PB et al., Phytopathology 2021 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="micro-item">
+        <div class="micro-img" onclick="openLightbox('https://onlinelibrary.wiley.com/cms/asset/a56c7fe3-2de9-46bb-80d6-17c2e691150e/pbi70339-fig-0004-m.jpg', 'కన్‌ఫోకల్ ఫ్లోరోసెన్స్ మైక్రోస్కోపీ: Nicotiana benthamiana ఆకు కణాలలో Cyprosin B ఉపకణ స్థానీయీకరణ')">
+          <img src="https://onlinelibrary.wiley.com/cms/asset/a56c7fe3-2de9-46bb-80d6-17c2e691150e/pbi70339-fig-0004-m.jpg" alt="కన్‌ఫోకల్ ఫ్లోరోసెన్స్ — Cyprosin B స్థానీయీకరణ" loading="lazy">
+        </div>
+        <div class="micro-info">
+          <span class="micro-tech">🟢 ప్రచురితం · కన్‌ఫోకల్ ఫ్లోరోసెన్స్</span>
+          <div class="micro-title">Cyprosin B ఉపకణ స్థానీయీకరణ</div>
+          <p class="micro-caption">
+            GFP-ట్యాగ్ చేయబడిన Cyprosin B వేరియంట్‌లను వ్యక్తపరిచే <em>Nicotiana benthamiana</em> ఆకు ఎపిడెర్మల్ కణాల కన్‌ఫోకల్ ఫ్లోరోసెన్స్ మైక్రోస్కోపీ. Plant-Specific Insert (PSI) డొమైన్ ద్వారా vacuolar లక్ష్యం మరియు కణేతర vesicle స్థానీయీకరణ చూపిస్తుంది.
+          </p>
+          <div class="micro-pub">
+            <a href="https://doi.org/10.1111/pbi.70339" target="_blank" rel="noopener">Muthusamy S, Kalyandurg PB et al., Plant Biotechnol. J. 2025 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="micro-item">
+        <div class="micro-img" onclick="openLightbox('https://static.wixstatic.com/media/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png/v1/fill/w_1344,h_1044,al_c,q_90,enc_avif,quality_auto/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png', 'రోగకారక పరస్పర చర్య సమయంలో వృక్ష కణ నిర్మాణాల కన్‌ఫోకల్ ఫ్లోరోసెన్స్ చిత్రాలు — SLU పరిశోధన')">
+          <img src="https://static.wixstatic.com/media/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png/v1/fill/w_1344,h_1044,al_c,q_90,enc_avif,quality_auto/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png" alt="కన్‌ఫోకల్ వృక్ష-రోగకారక పరస్పర చర్య" loading="lazy">
+        </div>
+        <div class="micro-info">
+          <span class="micro-tech">🟢 కన్‌ఫోకల్ ఫ్లోరోసెన్స్</span>
+          <div class="micro-title">వృక్ష-రోగకారక పరస్పర చర్య — కణ చిత్రాలు</div>
+          <p class="micro-caption">
+            అతిధేయి-రోగకారక పరస్పర చర్య సమయంలో వృక్ష కణాల ఫ్లోరోసెన్స్ కన్‌ఫోకల్ మైక్రోస్కోపీ. రోగకారకాలు plasmodesmata, vacuoles మరియు microtubule నెట్‌వర్క్‌లతో సహా వృక్ష కణ నిర్మాణాన్ని ఎలా పునర్వ్యవస్థీకరిస్తాయో చూపిస్తుంది.
+          </p>
+          <div class="micro-pub">SLU అల్నార్ప్ పరిశోధన — వృక్ష పెంపకం విభాగం</div>
+        </div>
+      </div>
+
+      <div class="upload-placeholder">
+        <div class="icon">🔬</div>
+        <div style="font-weight:700;color:var(--primary)">మరిన్ని చిత్రాలు త్వరలో</div>
+        <p style="font-size:.85rem;line-height:1.6">అదనపు అప్రచురిత సూక్ష్మదర్శిని చిత్రాలు — ఫ్లోరోసెన్స్, కన్‌ఫోకల్ మరియు హిస్టాలజీ — వచ్చే పరిశోధన నుండి.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Educational section -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="section-label">విద్య</div>
+    <h2 class="section-title">ఈ చిత్రాలను ఎలా చదవాలి</h2>
+    <p class="section-sub">సూక్ష్మదర్శిని నిపుణుడు కాదా? ఇక్కడ మీరు ఏమి చూస్తున్నారో సంక్షిప్తంగా వివరిస్తాను.</p>
+
+    <div class="grid-3 fade-in">
+      <div class="card">
+        <div class="card-tag">సాంకేతికత</div>
+        <div class="card-title">కన్‌ఫోకల్ ఫ్లోరోసెన్స్ మైక్రోస్కోపీ</div>
+        <p class="card-text">నిర్దిష్ట ప్రోటీన్‌లకు అటాచ్ చేసిన ఫ్లోరోసెంట్ ట్యాగ్‌లను ఉత్తేజపరచడానికి లేజర్ కాంతిని ఉపయోగిస్తుంది. వివిధ రంగులు = వివిధ ప్రోటీన్లు. కణాల లోపల ప్రోటీన్లు ఎక్కడ ఉన్నాయో ట్రాక్ చేయడానికి ఉపయోగిస్తారు.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">ఏమి చూడాలి</div>
+        <div class="card-title">రంగు ఛానెళ్ళు</div>
+        <p class="card-text">ఆకుపచ్చ తరచుగా GFP (Green Fluorescent Protein) ట్యాగింగ్‌ను సూచిస్తుంది. ఎరుపు/మెజెంటా మెమ్బ్రేన్‌లు, nuclei లేదా వేర్వేరు ప్రోటీన్లను గుర్తు చేయవచ్చు. అతివ్యాప్తి రంగులు (పసుపు) రెండు ప్రోటీన్లు co-localise అవుతున్నాయని చూపుతాయి — తరచుగా అవి సంకర్షణ చెందుతున్నాయని అర్థం.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">ఎందుకు ముఖ్యమైనది</div>
+        <div class="card-title">కనిపించనిది దృశ్యమానం</div>
+        <p class="card-text">కణాలు ~10–50 మైక్రోమీటర్లు — మన కంటికి కనిపించవు. మైక్రోస్కోపీ వృక్షం మరియు రోగకారకం మధ్య ఈ కనిపించని యుద్ధాలను మనం చూడగలిగే, కొలవగలిగే విధంగా చేస్తుంది — స్థిరమైన పంట రక్షణ వెనుక ఉన్న శాస్త్రాన్ని నడిపిస్తుంది.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="learn-te.html#microscopy" class="btn-secondary">వృక్ష శాస్త్రంలో మైక్రోస్కోపీ గురించి మరింత →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:1.5rem" onclick="closeLightbox()">
+  <div onclick="event.stopPropagation()" style="max-width:920px;width:100%">
+    <img src="" alt="" style="width:100%;border-radius:8px;max-height:82vh;object-fit:contain">
+    <p class="lb-caption" style="color:rgba(255,255,255,.7);font-size:.85rem;margin-top:.75rem;text-align:center;line-height:1.5"></p>
+    <button onclick="closeLightbox()" style="position:fixed;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer">✕</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">ప్రుత్వి కళ్యాండుర్గ్</div>
+        <p class="footer-brand-tagline">వృక్ష శాస్త్రవేత్త, వ్యవస్థాపకుడు మరియు ఫోటోగ్రాఫర్. ఉప్సాలా, స్వీడన్.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">in</a>
+          <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">GS</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">నావిగేట్</div>
+        <ul class="footer-links">
+          <li><a href="index-te.html">హోమ్</a></li>
+          <li><a href="about-te.html">నా గురించి</a></li>
+          <li><a href="publications-te.html">ప్రచురణలు</a></li>
+          <li><a href="photography-te.html">ఫోటోగ్రఫీ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">మరిన్ని</div>
+        <ul class="footer-links">
+          <li><a href="learn-te.html">నేర్చుకోండి</a></li>
+          <li><a href="startup-te.html">స్టార్టప్</a></li>
+          <li><a href="microscopy.html">English</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">బాహ్య లింక్‌లు</div>
+        <ul class="footer-links">
+          <li><a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a></li>
+          <li><a href="https://molecularworks.bio/test" target="_blank" rel="noopener">MolecularWorks ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 ప్రుత్వి కళ్యాండుర్గ్ · ఉప్సాలా, స్వీడన్</span>
+      <span style="opacity:.4">శాస్త్రం × ప్రకృతి × ఆవిష్కరణ</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
