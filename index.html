@@ -374,6 +374,100 @@
 </div>
 
 
+<!-- ═══════════════════ NARRATIVE CONNECTOR ═══════════════════ -->
+<section style="padding:4.5rem 0;background:var(--bg)">
+  <div class="section-inner">
+    <div class="fade-in" style="text-align:center;max-width:560px;margin:0 auto 3rem">
+      <div class="section-label" style="justify-content:center;margin-bottom:.6rem">The Thread</div>
+      <h2 style="font-size:clamp(1.7rem,3.2vw,2.5rem);font-family:var(--serif);font-weight:800;line-height:1.2;color:var(--text);margin-bottom:1rem">Seeing Biology<br>at Every Scale</h2>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.75">Everything I do — photography, microscopy, research, building — is one continuous act of observation. From mountain landscapes to individual molecules.</p>
+    </div>
+
+    <div class="narrative-grid fade-in">
+      <a href="photography.html" class="nc">
+        <div class="nc-scale">km · landscape</div>
+        <div class="nc-num">01</div>
+        <div class="nc-verb">I observe</div>
+        <div class="nc-desc">Landscape and macro photography across Sweden and beyond.</div>
+        <div class="nc-link">Photography →</div>
+      </a>
+      <a href="microscopy.html" class="nc">
+        <div class="nc-scale">µm · cell</div>
+        <div class="nc-num">02</div>
+        <div class="nc-verb">I zoom in</div>
+        <div class="nc-desc">Confocal fluorescence microscopy — making the invisible visible.</div>
+        <div class="nc-link">Microscopy →</div>
+      </a>
+      <a href="publications.html" class="nc">
+        <div class="nc-scale">nm · molecule</div>
+        <div class="nc-num">03</div>
+        <div class="nc-verb">I understand</div>
+        <div class="nc-desc">RNA biology and plant-pathogen research — 12+ publications.</div>
+        <div class="nc-link">Publications →</div>
+      </a>
+      <a href="startup.html" class="nc">
+        <div class="nc-scale">market · company</div>
+        <div class="nc-num">04</div>
+        <div class="nc-verb">I build</div>
+        <div class="nc-desc">Pre-seed biotech startup — translating a decade of science into impact.</div>
+        <div class="nc-link">Startup →</div>
+      </a>
+      <a href="about.html" class="nc">
+        <div class="nc-scale">global · supply chain</div>
+        <div class="nc-num">05</div>
+        <div class="nc-verb">I impact</div>
+        <div class="nc-desc">From a childhood in Anantapur to sustainable agriculture at scale.</div>
+        <div class="nc-link">About →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.narrative-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.nc {
+  display: flex; flex-direction: column;
+  padding: 1.75rem 1.25rem 1.5rem;
+  border-right: 1px solid var(--border);
+  text-decoration: none; color: inherit;
+  transition: background .18s;
+  background: var(--bg);
+}
+.nc:last-child { border-right: none; }
+.nc:hover { background: var(--surface); }
+.nc-scale {
+  font-size: .6rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--primary); margin-bottom: .85rem;
+}
+.nc-num {
+  font-size: .7rem; font-weight: 800;
+  color: var(--muted); opacity: .35;
+  margin-bottom: .2rem; font-family: 'JetBrains Mono', monospace;
+}
+.nc-verb {
+  font-size: 1.1rem; font-weight: 800;
+  color: var(--text); margin-bottom: .6rem; line-height: 1.2;
+}
+.nc-desc {
+  font-size: .8rem; line-height: 1.6;
+  color: var(--muted); flex: 1; margin-bottom: 1.25rem;
+}
+.nc-link { font-size: .75rem; font-weight: 700; color: var(--primary); }
+@media (max-width: 680px) {
+  .narrative-grid { grid-template-columns: 1fr 1fr; }
+  .nc { border-bottom: 1px solid var(--border); }
+  .nc:nth-child(2n) { border-right: none; }
+  .nc:last-child { grid-column: 1/-1; border-bottom: none; }
+}
+</style>
+
 <!-- ═══════════════════ ABOUT PREVIEW ═══════════════════ -->
 <section class="section">
   <div class="section-inner">
@@ -382,13 +476,10 @@
         <div class="section-label">About</div>
         <h2 class="section-title">Where Molecules Meet Markets</h2>
         <p style="font-size:1.05rem;line-height:1.8;color:var(--muted);margin-bottom:1.5rem">
-          Born in India, trained in Sweden — I have spent over a decade studying the molecular conversations between plants and their pathogens at the Swedish University of Agricultural Sciences (SLU).
-        </p>
-        <p style="font-size:1.05rem;line-height:1.8;color:var(--muted);margin-bottom:1.5rem">
-          My PhD at SLU Uppsala explored how plant viruses hijack cellular machinery for systemic movement. My postdoctoral work at SLU Alnarp pioneered dsRNA spray technologies to protect potatoes from <em>Phytophthora infestans</em> — the pathogen behind the Irish Potato Famine.
+          PhD from SLU Uppsala in plant virology, postdoc at SLU Alnarp pioneering RNA-based crop protection. Grew up watching farmers in Anantapur — still chasing the same problem, just closer to solving it.
         </p>
         <p style="font-size:1.05rem;line-height:1.8;color:var(--muted);margin-bottom:2rem">
-          Today, as CTO & Co-Founder of a stealth pre-seed biotechnology startup, I am translating that decade of research into scalable, sustainable crop protection solutions.
+          Now CTO &amp; Co-Founder of a pre-seed biotech startup, translating a decade of research into real supply chain impact.
         </p>
         <a href="about.html" class="btn-primary">Full Profile →</a>
       </div>
