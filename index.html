@@ -6,6 +6,267 @@
   <title>Dr. Pruthvi Kalyandurg — Plant Scientist | Entrepreneur | Photographer</title>
   <meta name="description" content="Molecular biologist and entrepreneur. Scientist, founder of a stealth biotech startup, and photographer based in Uppsala, Sweden.">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Microscope Journey ───────────────────────────────────── */
+    #journey {
+      height: 600vh;
+      position: relative;
+    }
+    #scope {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+    .j-layer {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      will-change: opacity;
+      background: #000;
+    }
+    .j-layer:first-child { opacity: 1; }
+    .j-layer-bg {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      will-change: transform;
+      transform-origin: center center;
+      transform: scale(1);
+    }
+    /* Per-image crop */
+    .j-layer[data-i="0"] .j-layer-bg {
+      background-image: url('images/Leaf.avif');
+      background-size: cover;
+      background-position: center;
+    }
+    .j-layer[data-i="1"] .j-layer-bg {
+      background-image: url('images/sterio.jpeg');
+      background-size: 350%;
+      background-position: 19% 5%;
+    }
+    .j-layer[data-i="2"] .j-layer-bg {
+      background-image: url('images/Confocal.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .j-layer[data-i="3"] .j-layer-bg {
+      background-image: url('images/Confocal-4.png');
+      background-size: cover;
+      background-position: center 35%;
+    }
+    .j-layer[data-i="4"] .j-layer-bg {
+      background-image: url('images/Confocal-5.png');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    /* Vignette */
+    #j-vig {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+    /* HUD */
+    #j-hud {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(1.4rem, 3vw, 2.2rem);
+    }
+    .j-hud-block { display: flex; flex-direction: column; gap: .28rem; }
+    #j-hud-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1rem, 2.6vw, 1.55rem);
+      font-style: italic;
+      font-weight: 700;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 1px 10px rgba(0,0,0,.8);
+      line-height: 1.2;
+    }
+    #j-hud-technique {
+      font-size: .68rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.42);
+      letter-spacing: .03em;
+    }
+    #j-hud-channel {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.35);
+      letter-spacing: .06em;
+      min-height: .8em;
+    }
+    /* Dots */
+    #j-dots {
+      position: absolute;
+      right: clamp(.9rem, 2.5vw, 1.8rem);
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .j-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      transition: background .35s, transform .35s, box-shadow .35s;
+    }
+    .j-dot.on {
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 0 7px rgba(255,255,255,.45);
+      transform: scale(1.35);
+    }
+    /* Intro overlay */
+    #j-intro {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      padding-top: calc(var(--nav-h) + 2rem);
+      pointer-events: none;
+      /* Stronger dark centre so text pops on the dark leaf image */
+      background: radial-gradient(ellipse 80% 70% at 50% 50%,
+        rgba(0,0,0,.72) 0%, rgba(0,0,0,.38) 52%, transparent 100%);
+    }
+    .j-eyebrow {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(0,0,0,1);
+      margin-bottom: 1.1rem;
+    }
+    .j-h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.07;
+      color: #fff;
+      text-shadow: 0 2px 28px rgba(0,0,0,.85);
+      margin-bottom: 1rem;
+    }
+    .j-h1 em { color: #4ade80; font-style: italic; }
+    .j-sub {
+      font-size: clamp(.82rem, 1.7vw, .97rem);
+      color: rgba(255,255,255,.82);
+      text-shadow: 0 1px 6px rgba(0,0,0,.9);
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Stage highlight cards (appear on the images) ───────── */
+    .j-card {
+      position: absolute;
+      right: clamp(3rem, 6vw, 5rem);
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(88vw, 320px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 15;
+      background: rgba(0, 0, 0, .72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 14px;
+      padding: 1.6rem 1.5rem;
+    }
+    .j-card.j-card-active { pointer-events: all; }
+    .j-card-icon { font-size: 1.6rem; margin-bottom: .75rem; }
+    .j-card-label {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #4ade80;
+      margin-bottom: .35rem;
+    }
+    .j-card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: .6rem;
+    }
+    .j-card-text {
+      font-size: .8rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,.72);
+      margin-bottom: 1rem;
+    }
+    .j-card-link {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 600;
+      color: #4ade80;
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+    .j-card-link:hover { color: #86efac; }
+    .j-ctas {
+      display: flex;
+      gap: 1rem;
+      pointer-events: all;
+    }
+    .j-btn-primary {
+      padding: .65rem 1.5rem;
+      background: #2D7A4F;
+      color: #fff;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .j-btn-primary:hover { background: #1E5535; }
+    .j-btn-secondary {
+      padding: .65rem 1.5rem;
+      border: 1px solid rgba(255,255,255,.3);
+      color: rgba(255,255,255,.8);
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .j-btn-secondary:hover { border-color: rgba(255,255,255,.6); color: #fff; }
+    .j-scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.28);
+      font-size: .62rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      animation: j-bob 2.3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .j-scroll-cue svg { width: 17px; opacity: .45; }
+    @keyframes j-bob {
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(7px)}
+    }
+  </style>
 </head>
 <body>
 
@@ -39,84 +300,79 @@
   <a href="startup.html">Startup &amp; Innovation</a>
 </div>
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
-<section class="hero" aria-label="Introduction">
-  <div class="hero-bg"></div>
-  <div class="hero-bg-img" aria-hidden="true"></div>
+<!-- ═══════════════════ JOURNEY (Microscope Scroll Hero) ═══════════════════ -->
+<div id="journey" aria-label="Microscope journey from leaf to sporangia">
+  <div id="scope">
 
-  <div class="hero-content">
-    <!-- Left: text -->
-    <div>
-      <div class="hero-eyebrow">Plant Scientist · Entrepreneur · Photographer</div>
-      <h1 class="hero-name">Dr. Pruthvi<br><em>Kalyandurg</em></h1>
+    <!-- Image layers (0 = bottom, 4 = top) -->
+    <div class="j-layer" data-i="0"><div class="j-layer-bg"></div></div>
+    <div class="j-layer" data-i="1"><div class="j-layer-bg"></div></div>
+    <div class="j-layer" data-i="2"><div class="j-layer-bg"></div></div>
+    <div class="j-layer" data-i="3"><div class="j-layer-bg"></div></div>
+    <div class="j-layer" data-i="4"><div class="j-layer-bg"></div></div>
 
-      <div class="hero-titles">
-        <span class="hero-title-chip"><span class="dot"></span>CTO &amp; Co-Founder · Stealth Biotech Startup</span>
-        <span class="hero-title-chip"><span class="dot"></span>Plant Pathologist</span>
-        <span class="hero-title-chip"><span class="dot"></span>RNA Biologist</span>
-        <span class="hero-title-chip"><span class="dot"></span>Visual Storyteller</span>
+    <!-- Vignette overlay -->
+    <div id="j-vig" aria-hidden="true"></div>
+
+    <!-- HUD (bottom-left) -->
+    <div id="j-hud" aria-hidden="true">
+      <div class="j-hud-block">
+        <div id="j-hud-title">Whole potato leaf</div>
+        <div id="j-hud-technique">BioRad ChemiDoc · fluorescence imaging</div>
+        <div id="j-hud-channel">GFP · Cy3</div>
       </div>
+    </div>
 
-      <p class="hero-bio">
-        Molecular biologist turned entrepreneur with 12+ years of experience in RNA biology and plant-pathogen interactions. Building RNA-based crop protection technologies as sustainable alternatives to conventional fungicides — from research bench to commercial greenhouse.
-      </p>
+    <!-- Stage dots (right edge) -->
+    <div id="j-dots" aria-hidden="true"></div>
 
-      <div class="hero-ctas">
-        <a href="about.html" class="btn-primary">Explore My Work <span>→</span></a>
-        <a href="publications.html" class="btn-secondary">📄 Publications</a>
+    <!-- Highlight cards — fade in over each stage's image -->
+    <div class="j-card" id="j-card-0" aria-hidden="true">
+      <div class="j-card-icon">🚀</div>
+      <div class="j-card-label">Innovation</div>
+      <div class="j-card-title">CTO &amp; Co-Founder</div>
+      <p class="j-card-text">Building a stealth biotech startup developing proprietary post-harvest solutions for the global cut flower and fresh produce industry. Advanced from TRL 1–2 to greenhouse validation.</p>
+      <a href="startup.html" class="j-card-link">Startup &amp; Innovation →</a>
+    </div>
+
+    <div class="j-card" id="j-card-1" aria-hidden="true">
+      <div class="j-card-icon">🔬</div>
+      <div class="j-card-label">Science</div>
+      <div class="j-card-title">Scientific Portfolio</div>
+      <p class="j-card-text">12+ peer-reviewed publications across plant pathology, RNA interference, and plant-microbe interactions. First to demonstrate SIGS-based protection from <em style="color:rgba(255,255,255,.85)">Phytophthora infestans</em>.</p>
+      <a href="publications.html" class="j-card-link">View Publications →</a>
+    </div>
+
+    <div class="j-card" id="j-card-2" aria-hidden="true">
+      <div class="j-card-icon">📷</div>
+      <div class="j-card-label">Storytelling</div>
+      <div class="j-card-title">Visual Portfolio</div>
+      <p class="j-card-text">Science through the lens — from confocal fluorescence microscopy of plant-pathogen interactions to macro and landscape photography across Sweden and beyond.</p>
+      <a href="photography.html" class="j-card-link">Explore Gallery →</a>
+    </div>
+
+    <!-- Intro overlay -->
+    <div id="j-intro">
+      <div class="j-eyebrow">Dr. Pruthvi Kalyandurg · Plant Scientist &amp; Entrepreneur</div>
+      <h1 class="j-h1">Seeing <em>biology</em><br>at every scale</h1>
+      <p class="j-sub">Scroll to journey through the world a plant scientist sees — from the whole leaf to the individual spore.</p>
+      <div class="j-ctas">
+        <a href="about.html" class="j-btn-primary">Explore My Work →</a>
+        <a href="publications.html" class="j-btn-secondary">Publications</a>
+      </div>
+      <div style="margin-top:2rem">
+        <div class="j-scroll-cue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+          scroll
+        </div>
       </div>
     </div>
 
   </div>
+</div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    Scroll
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 5v14M5 12l7 7 7-7"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ═══════════════════ FEATURED HIGHLIGHTS ═══════════════════ -->
-<section class="section section-alt">
-  <div class="section-inner">
-    <div class="section-label">Featured</div>
-    <h2 class="section-title">Science, Innovation &amp; Storytelling</h2>
-    <p class="section-sub">Three dimensions of one scientific life — rigorous research, entrepreneurial impact, and a passion for visual communication.</p>
-
-    <div class="grid-3 fade-in">
-      <!-- Startup -->
-      <div class="highlight-card">
-        <div class="highlight-icon">🚀</div>
-        <h3 class="highlight-title">CTO &amp; Co-Founder</h3>
-        <p class="highlight-text">
-          Currently building a stealth biotech startup developing proprietary post-harvest solutions for the global cut flower and fresh produce industry. Advanced technology from TRL 1–2 to greenhouse validation.
-        </p>
-        <a href="startup.html" class="highlight-link">Startup &amp; Innovation <span class="arrow">→</span></a>
-      </div>
-
-      <!-- Science -->
-      <div class="highlight-card">
-        <div class="highlight-icon">🔬</div>
-        <h3 class="highlight-title">Scientific Portfolio</h3>
-        <p class="highlight-text">
-          Author of 12+ peer-reviewed publications and 2 book chapters across plant pathology, RNA interference, and plant-microbe interactions. First to demonstrate SIGS-based protection of plants from <em>Phytophthora infestans</em>.
-        </p>
-        <a href="publications.html" class="highlight-link">View Publications <span class="arrow">→</span></a>
-      </div>
-
-      <!-- Photography + Microscopy -->
-      <div class="highlight-card">
-        <div class="highlight-icon">📷</div>
-        <h3 class="highlight-title">Visual Portfolio</h3>
-        <p class="highlight-text">
-          Science through the lens — from confocal fluorescence microscopy of plant-pathogen interactions to macro and landscape photography. Two Instagram accounts dedicated to capturing the beauty of the natural world.
-        </p>
-        <a href="photography.html" class="highlight-link">Explore Gallery <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════ ABOUT PREVIEW ═══════════════════ -->
 <section class="section">
@@ -389,5 +645,152 @@
 </footer>
 
 <script src="script.js"></script>
+
+<script>
+/* ── Microscope Journey ───────────────────────────────────── */
+(function () {
+  const STAGES = [
+    { title: 'Whole potato leaf',         technique: 'BioRad ChemiDoc · fluorescence imaging',  channel: 'GFP · Cy3',                        vignette: 0.00 },
+    { title: 'Infected leaf tissue',      technique: 'Stereomicroscope · Trypan blue staining',  channel: '',                                  vignette: 0.28 },
+    { title: 'Fungal mycelia at stomata', technique: 'Confocal fluorescence microscopy',          channel: 'GFP · Chlorophyll autofluorescence', vignette: 0.60 },
+    { title: 'Pathogen mycelia & sporangia', technique: 'Confocal fluorescence microscopy',       channel: 'GFP · Cy3',                         vignette: 0.82 },
+    { title: 'Sporangia — close view',    technique: 'Confocal · zoomed region',                  channel: 'GFP',                               vignette: 0.00 },
+  ];
+  const N = STAGES.length;
+
+  const journey  = document.getElementById('journey');
+  const layers   = [...document.querySelectorAll('.j-layer')];
+  const layerBgs = [...document.querySelectorAll('.j-layer-bg')];
+  const vig      = document.getElementById('j-vig');
+  const intro    = document.getElementById('j-intro');
+  const dotsWrap = document.getElementById('j-dots');
+  const hudTitle     = document.getElementById('j-hud-title');
+  const hudTechnique = document.getElementById('j-hud-technique');
+  const hudChannel   = document.getElementById('j-hud-channel');
+
+  if (!journey) return;   // safety — only runs on pages that have the journey
+
+  // Build dots
+  STAGES.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'j-dot' + (i === 0 ? ' on' : '');
+    dotsWrap.appendChild(d);
+  });
+  const dots = [...dotsWrap.querySelectorAll('.j-dot')];
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function clamp(x, lo, hi) { return Math.max(lo, Math.min(hi, x)); }
+
+  function getStageFloat() {
+    const top   = journey.getBoundingClientRect().top;
+    const total = journey.offsetHeight - window.innerHeight;
+    return Math.max(0, Math.min(N, (-top / total) * N));
+  }
+
+  // Overlapping cross-fade — no black gaps between transitions
+  function layerOpacity(i, sf) {
+    const sp = sf - i;
+    const BEFORE = 0.3, HOLD_IN = 0.2, HOLD_OUT = 0.8, AFTER = 0.3;
+    const FDUR  = BEFORE + HOLD_IN;
+    const FODUR = (1 - HOLD_OUT) + AFTER;
+
+    if (i === 0) {
+      if (sp < HOLD_OUT)    return 1;
+      if (sp < 1 + AFTER)   return 1 - (sp - HOLD_OUT) / FODUR;
+      return 0;
+    }
+    if (i === N - 1) {
+      if (sp < -BEFORE)  return 0;
+      if (sp < HOLD_IN)  return (sp + BEFORE) / FDUR;
+      return 1;
+    }
+    if (sp < -BEFORE)    return 0;
+    if (sp < HOLD_IN)    return (sp + BEFORE) / FDUR;
+    if (sp < HOLD_OUT)   return 1;
+    if (sp < 1 + AFTER)  return 1 - (sp - HOLD_OUT) / FODUR;
+    return 0;
+  }
+
+  function layerScale(i, sf) {
+    const sp = Math.max(0, Math.min(1, sf - i));
+    return 1 + sp * 0.09;
+  }
+
+  function setVignette(amount) {
+    if (amount < 0.02) { vig.style.background = 'none'; return; }
+    const r1 = lerp(100, 46, amount);
+    const r2 = lerp(115, 68, amount);
+    vig.style.background =
+      `radial-gradient(ellipse ${r1.toFixed(1)}% ${r1.toFixed(1)}% at center,` +
+      ` transparent 0%, transparent ${(r1 - 4).toFixed(1)}%,` +
+      ` rgba(0,0,0,${(amount * 0.78).toFixed(3)}) ${r2.toFixed(1)}%,` +
+      ` rgba(0,0,0,${amount.toFixed(3)}) 100%)`;
+  }
+
+  // Cards — one per stage (stages 1, 2, 3)
+  const cards = [
+    document.getElementById('j-card-0'),
+    document.getElementById('j-card-1'),
+    document.getElementById('j-card-2'),
+  ];
+
+  // Card opacity: each card lives during its stage zone [1,2], [2,3], [3,4]
+  function cardOpacity(cardIdx, sf) {
+    const base = cardIdx + 1;     // stage 1, 2, 3
+    const sp   = sf - base;       // position within that zone
+    const FADE = 0.3;
+    if (sp < 0)         return 0;
+    if (sp < FADE)      return sp / FADE;
+    if (sp < 1 - FADE)  return 1;
+    if (sp < 1)         return 1 - (sp - (1 - FADE)) / FADE;
+    return 0;
+  }
+
+  let prevHudIdx = -1;
+  function updateHUD(sf) {
+    const idx = clamp(Math.round(sf), 0, N - 1);
+    if (idx === prevHudIdx) return;
+    prevHudIdx = idx;
+    const s = STAGES[idx];
+    hudTitle.textContent     = s.title;
+    hudTechnique.textContent = s.technique;
+    hudChannel.textContent   = s.channel;
+    dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+  }
+
+  function updateIntro(sf) {
+    const op = clamp(1 - sf / 0.32, 0, 1);
+    intro.style.opacity    = op;
+    intro.style.visibility = op < 0.01 ? 'hidden' : 'visible';
+  }
+
+  let prevSf = -1;
+  function render() {
+    const sf = getStageFloat();
+    if (Math.abs(sf - prevSf) > 0.0002) {
+      prevSf = sf;
+      layers.forEach((layer, i) => {
+        layer.style.opacity = layerOpacity(i, sf).toFixed(4);
+        layerBgs[i].style.transform = `scale(${layerScale(i, sf).toFixed(4)})`;
+      });
+      const si   = clamp(Math.floor(sf), 0, N - 2);
+      const frac = clamp(sf - si, 0, 1);
+      setVignette(lerp(STAGES[si].vignette, STAGES[si + 1].vignette, frac));
+      updateHUD(sf);
+      updateIntro(sf);
+      // Animate highlight cards
+      cards.forEach((card, i) => {
+        const op = cardOpacity(i, sf);
+        card.style.opacity    = op.toFixed(4);
+        card.style.visibility = op < 0.01 ? 'hidden' : 'visible';
+        card.classList.toggle('j-card-active', op > 0.01);
+        card.setAttribute('aria-hidden', op < 0.01 ? 'true' : 'false');
+      });
+    }
+    requestAnimationFrame(render);
+  }
+  render();
+}());
+</script>
 </body>
 </html>
