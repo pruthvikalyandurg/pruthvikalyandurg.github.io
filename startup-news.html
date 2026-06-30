@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venture &amp; Field Notes · Dr. Pruthvi Kalyandurg, PhD</title>
+<meta name="description" content="Why I'm building an early-stage biotech venture, and an open log of the parts I can share: the science, the milestones, and the conviction behind a confidential translational program.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf8f4;--bg2:#f0ebe2;--bg3:#e8e1d6;
+  --line:rgba(28,26,23,0.12);--text:#1c1a17;--muted:rgba(28,26,23,0.56);--faint:rgba(28,26,23,0.32);
+  --accent:#8a6120;--accent-soft:rgba(138,97,32,0.12);--pair:#4e8c60;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--maxw:1180px;
+}
+[data-theme="dark"]{
+  --bg:#0c0b0f;--bg2:#131217;--bg3:#17161c;
+  --line:rgba(240,236,227,0.14);--text:#f0ece3;--muted:rgba(240,236,227,0.60);--faint:rgba(240,236,227,0.30);
+  --accent:#d4aa60;--accent-soft:rgba(212,170,96,0.14);--pair:#6faa86;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background .5s,color .5s}
+a{color:inherit}
+::selection{background:var(--accent-soft)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem clamp(1.5rem,4vw,3rem);display:flex;justify-content:space-between;align-items:center}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 30%,transparent);opacity:.92;pointer-events:none;transition:background .5s}
+.nav-logo{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--text);position:relative;z-index:1}
+.nav-right{display:flex;align-items:center;gap:clamp(1.2rem,3vw,2.4rem);position:relative;z-index:1}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.theme-toggle{background:none;border:1px solid var(--line);color:var(--muted);width:34px;height:34px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:.2s;font-size:.9rem;line-height:1}
+.theme-toggle:hover{color:var(--text);border-color:var(--accent)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.nav-burger span{width:22px;height:1.5px;background:var(--text)}
+
+/* HERO */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('images/Leaf.jpg') center 35%/cover no-repeat;filter:saturate(.7)}
+[data-theme="light"] .hero-bg{opacity:.5}
+[data-theme="dark"] .hero-bg{opacity:.32}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,var(--bg) 96%)}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 clamp(1.5rem,4vw,3rem) clamp(4rem,7vh,6rem)}
+.stealth{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem;display:flex;align-items:center;gap:.75rem}
+.stealth::before{content:'';width:2rem;height:1px;background:var(--accent)}
+.hero-title{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6.5vw,5.6rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:1.8rem;max-width:16ch}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-desc{font-size:clamp(1rem,1.4vw,1.1rem);color:var(--muted);max-width:56ch;line-height:1.8}
+.pills{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap}
+.pill{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:.6rem 1.3rem;text-decoration:none;transition:.2s}
+.pill:hover{color:var(--text);border-color:var(--accent)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(5rem,10vh,8rem) clamp(1.5rem,4vw,3rem)}
+.wrap-narrow{max-width:820px}
+.tag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.9rem;margin-bottom:2.4rem}
+.tag::before{content:'';width:1.4rem;height:1px;background:var(--accent)}
+.alt{background:var(--bg2);transition:background .5s}
+.divider{border:none;border-top:1px solid var(--line);max-width:var(--maxw);margin:0 auto}
+.head{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.15;letter-spacing:-.02em;max-width:18ch;margin-bottom:4rem}
+.head em{font-style:italic;color:var(--accent)}
+
+/* STORY TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:var(--line)}
+.tl{position:relative;padding:0 0 4.5rem 3.2rem}
+.tl:last-child{padding-bottom:0}
+.tl::before{content:'';position:absolute;left:-.32rem;top:.55rem;width:.64rem;height:.64rem;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tl-year{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+.tl-title{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2.4vw,1.9rem);line-height:1.2;letter-spacing:-.01em;margin-bottom:1rem}
+.tl-title em{font-style:italic;color:var(--accent)}
+.tl-body{font-size:.97rem;color:var(--muted);line-height:1.85;max-width:58ch}
+.tl-body em{font-style:italic;color:var(--text);opacity:.8}
+
+/* MILESTONE GRID */
+.mile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.mile{background:var(--bg);padding:2.4rem}
+.mile .n{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:.9rem;margin-bottom:1rem}
+.mile h3{font-family:var(--serif);font-weight:400;font-size:1.2rem;line-height:1.25;margin-bottom:.8rem}
+.mile p{font-size:.9rem;color:var(--muted);line-height:1.75}
+
+/* FIELD NOTES */
+.note-entry{border-top:1px solid var(--line);padding:3.4rem 0;display:grid;grid-template-columns:13rem 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:start}
+.note-entry:last-of-type{border-bottom:1px solid var(--line)}
+.note-week{font-family:var(--serif);font-size:2.4rem;color:var(--accent-soft);line-height:1;margin-bottom:.7rem}
+.note-date{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.note-title{font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.3;letter-spacing:-.01em;margin-bottom:1.1rem}
+.note-text{font-size:.95rem;color:var(--muted);line-height:1.9}
+.note-text p{margin-bottom:1rem}.note-text p:last-child{margin-bottom:0}
+.note-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.6rem}
+.note-tag{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:.22rem .6rem}
+
+/* CONTACT STRIP */
+.cstrip{text-align:center}
+.cstrip h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.2rem}
+.cstrip h2 em{font-style:italic;color:var(--accent)}
+.cstrip p{font-size:1rem;color:var(--muted);max-width:46ch;margin:0 auto 2.2rem;line-height:1.8}
+.contact-links{display:flex;flex-wrap:wrap;gap:.6rem 2.2rem;justify-content:center;font-size:.82rem}
+.contact-links a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;transition:.2s}
+.contact-links a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.pullquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.8vw,2.1rem);line-height:1.4;color:var(--text);max-width:24ch;margin:0 0 3.5rem;padding-left:1.5rem;border-left:2px solid var(--accent)}
+.pullquote span{display:block;font-family:var(--sans);font-style:normal;font-size:.78rem;letter-spacing:.04em;color:var(--muted);margin-top:1.1rem}
+
+footer{border-top:1px solid var(--line);padding:2.4rem clamp(1.5rem,4vw,3rem);display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.footer-name{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.8rem}
+.footer-links a{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:.7rem;color:var(--faint)}
+
+.reveal{opacity:0;transform:translateY(1.4rem);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}
+
+@media(max-width:880px){
+  .nav-links{position:fixed;inset:0 0 auto;top:0;flex-direction:column;gap:1.8rem;background:var(--bg);padding:6rem 2rem 2.5rem;transform:translateY(-100%);transition:transform .4s;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+  .nav-links.open{transform:none}
+  .nav-burger{display:flex}
+  .mile-grid{grid-template-columns:1fr}
+  .note-entry{grid-template-columns:1fr;gap:1.2rem}
+  footer{flex-direction:column;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.001ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Pruthvi Kalyandurg</a>
+  <div class="nav-right">
+    <ul class="nav-links" id="navlinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#education">Education</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="startup-news.html" class="active">Venture</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☾</button>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="stealth">Stealth biotech venture · Field notes</div>
+    <h1 class="hero-title">Why I'm <em>building</em> this.</h1>
+    <p class="hero-desc">A running account of the conviction behind an early-stage venture built on a decade of research, and an open log of the parts I can share. The story starts long before the company did.</p>
+    <div class="pills">
+      <a href="#story" class="pill">The story</a>
+      <a href="#milestones" class="pill">Where it stands</a>
+      <a href="#notes" class="pill">Field notes</a>
+    </div>
+  </div>
+</header>
+
+<!-- THE STORY -->
+<section id="story">
+  <div class="wrap">
+    <div class="tag">The story</div>
+    <h2 class="head reveal">Why I'm building this, <em>in my own words</em>.</h2>
+    <blockquote class="pullquote reveal">“Twenty years ago you were already talking about plant biology, and you haven't stopped.”<span>A friend, on a throughline I never set out to follow.</span></blockquote>
+    <div class="timeline">
+      <div class="tl reveal">
+        <div class="tl-year">1990s · Anantapur, India</div>
+        <h3 class="tl-title">Where it <em>started</em>.</h3>
+        <p class="tl-body">Growing up in a drought-prone district, the news was full of failing crops and families losing everything they had grown. I was a child, but it stayed with me. I didn't have the words for it then, but I was already thinking about plants, food, and survival.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="tl-year">2010 · India</div>
+        <h3 class="tl-title">My <em>first company</em>.</h3>
+        <p class="tl-body">I started a small agricultural production company. The science and the execution were sound, but it never took off. That taught me what I carry into everything since: a company stands or falls on its business and commercial side, not on technical merit alone.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="tl-year">2015 – 2024 · Sweden</div>
+        <h3 class="tl-title">Ten years of <em>groundwork</em>.</h3>
+        <p class="tl-body">A PhD and then a postdoc in plant viruses, RNA biology, and crop protection. Along the way, the first demonstration of RNA-based protection against the pathogen behind the Irish Potato Famine, which still destroys billions in crops today. The science that would become a company was being built, paper by paper.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="tl-year">Early 2025</div>
+        <h3 class="tl-title">Stop writing about it.<br><em>Start solving it</em>.</h3>
+        <p class="tl-body">After a decade of publishing, I wanted results that did not sit on a shelf. So I co-founded an early-stage venture, not because the timing was perfect, but because the science was ready and the problem would not wait.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="tl-year">Now · Building in stealth</div>
+        <h3 class="tl-title">Here's what I <em>can share</em>.</h3>
+        <p class="tl-body">Crops are lost between harvest and use at a scale that costs the global supply chain billions every year. We are working on a biology-based answer that is precise, sustainable, and leaves no chemical residue. What began as applied research is now a venture with a team, signed early partners, and real-world validation behind it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- MILESTONES -->
+<section id="milestones" class="alt">
+  <div class="wrap">
+    <div class="tag">Where it stands</div>
+    <h2 class="head reveal">From concept toward <em>the field</em>.</h2>
+    <div class="mile-grid">
+      <div class="mile reveal">
+        <div class="n">i.</div>
+        <h3>The science is proven</h3>
+        <p>The core method is published in peer-reviewed journals, reproduced, and understood. The company did not start from a hunch.</p>
+      </div>
+      <div class="mile reveal d1">
+        <div class="n">ii.</div>
+        <h3>It works outside the lab</h3>
+        <p>The approach has moved from a research concept to controlled real-world testing, with results that hold up beyond a single bench.</p>
+      </div>
+      <div class="mile reveal d2">
+        <div class="n">iii.</div>
+        <h3>A team and real demand</h3>
+        <p>The company started with two people and now has a small, capable team, a clear technical plan, an intellectual-property roadmap, and signed contracts with the people who will use the product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FIELD NOTES -->
+<section id="notes">
+  <div class="wrap wrap-narrow">
+    <div class="tag">Field notes</div>
+    <h2 class="head reveal" style="margin-bottom:1.4rem">A running diary from the lab,<br>the greenhouse, and the <em>pitch room</em>.</h2>
+    <p class="tl-body reveal d1" style="margin-bottom:3.5rem">What is being built, tested, and learned. No polish, no PR, just the work. Names and specifics stay confidential; the thinking does not.</p>
+
+    <!-- Add a new entry by copying one .note-entry block and editing it. Newest goes on top. -->
+
+    <article class="note-entry reveal">
+      <div>
+        <div class="note-week">N&deg;01</div>
+        <div class="note-date">June 2026</div>
+      </div>
+      <div>
+        <h3 class="note-title">Starting the log.</h3>
+        <div class="note-text">
+          <p>First entry. The company is real, the work is underway, and I've decided to keep a public record of the parts I can share. Not because it's expected, but because the road from an idea to real-world impact deserves documentation, especially when that idea started in a place where a failed crop meant a family in crisis.</p>
+          <p>This stretch: refining the core technical question, processing another round of greenhouse data, and the first proper conversations with the people who would eventually rely on the product. More on each as they develop.</p>
+        </div>
+        <div class="note-tags"><span class="note-tag">Lab</span><span class="note-tag">Greenhouse</span><span class="note-tag">Team</span></div>
+      </div>
+    </article>
+
+    <!-- /entries -->
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="alt">
+  <div class="wrap cstrip">
+    <div class="tag" style="justify-content:center">Get in touch</div>
+    <h2 class="reveal">Building something <em>adjacent?</em></h2>
+    <p class="reveal d1">If your work touches RNA biology, molecular diagnostics, agricultural biotech, or the long road from science to product, I'm always open to a conversation.</p>
+    <div class="contact-links reveal d1">
+      <a href="mailto:pruthvi.balachandra@gmail.com">pruthvi.balachandra@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Dr. Pruthvi Kalyandurg, PhD</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="publications.html">Publications</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© <span id="year"></span> Pruthvi Kalyandurg · Uppsala, Sweden</div>
+</footer>
+
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-toggle');
+  const init=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',init);btn.textContent=init==='dark'?'☀':'☾';
+  btn.onclick=()=>{const n=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',n);btn.textContent=n==='dark'?'☀':'☾';localStorage.setItem('theme',n)};
+})();
+(function(){
+  const b=document.getElementById('burger'),l=document.getElementById('navlinks');
+  b.onclick=()=>{const o=l.classList.toggle('open');b.setAttribute('aria-expanded',o)};
+  l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>l.classList.remove('open')));
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

@@ -1,887 +1,758 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Pruthvi Kalyandurg — Plant Scientist | Entrepreneur | Photographer</title>
-  <meta name="description" content="Molecular biologist and entrepreneur. Scientist, founder of a stealth biotech startup, and photographer based in Uppsala, Sweden.">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* ── Microscope Journey ───────────────────────────────────── */
-    #journey {
-      height: 600vh;
-      position: relative;
-    }
-    #scope {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      background: #000;
-    }
-    .j-layer {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      will-change: opacity;
-      background: #000;
-    }
-    .j-layer:first-child { opacity: 1; }
-    .j-layer-bg {
-      position: absolute;
-      inset: 0;
-      background-repeat: no-repeat;
-      will-change: transform;
-      transform-origin: center center;
-      transform: scale(1);
-    }
-    /* Per-image crop */
-    .j-layer[data-i="0"] .j-layer-bg {
-      background-image: url('images/Leaf.avif');
-      background-size: cover;
-      background-position: center;
-    }
-    .j-layer[data-i="1"] .j-layer-bg {
-      background-image: url('images/sterio.jpeg');
-      background-size: 350%;
-      background-position: 19% 5%;
-    }
-    .j-layer[data-i="2"] .j-layer-bg {
-      background-image: url('images/Confocal.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .j-layer[data-i="3"] .j-layer-bg {
-      background-image: url('images/Confocal-4.png');
-      background-size: cover;
-      background-position: center 35%;
-    }
-    .j-layer[data-i="4"] .j-layer-bg {
-      background-image: url('images/Confocal-5.png');
-      background-size: cover;
-      background-position: center 40%;
-    }
-    /* Vignette */
-    #j-vig {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 3;
-    }
-    /* HUD */
-    #j-hud {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 10;
-      display: flex;
-      align-items: flex-end;
-      padding: clamp(1.4rem, 3vw, 2.2rem);
-    }
-    .j-hud-block { display: flex; flex-direction: column; gap: .28rem; }
-    #j-hud-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1rem, 2.6vw, 1.55rem);
-      font-style: italic;
-      font-weight: 700;
-      color: rgba(255,255,255,.92);
-      text-shadow: 0 1px 10px rgba(0,0,0,.8);
-      line-height: 1.2;
-    }
-    #j-hud-technique {
-      font-size: .68rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.42);
-      letter-spacing: .03em;
-    }
-    #j-hud-channel {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .62rem;
-      font-weight: 400;
-      color: rgba(255,255,255,.35);
-      letter-spacing: .06em;
-      min-height: .8em;
-    }
-    /* Dots */
-    #j-dots {
-      position: absolute;
-      right: clamp(.9rem, 2.5vw, 1.8rem);
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: .55rem;
-      z-index: 10;
-      pointer-events: none;
-    }
-    .j-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.2);
-      transition: background .35s, transform .35s, box-shadow .35s;
-    }
-    .j-dot.on {
-      background: rgba(255,255,255,.88);
-      box-shadow: 0 0 7px rgba(255,255,255,.45);
-      transform: scale(1.35);
-    }
-    /* Intro overlay */
-    #j-intro {
-      position: absolute;
-      inset: 0;
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      padding-top: calc(var(--nav-h) + 2rem);
-      pointer-events: none;
-      /* Stronger dark centre so text pops on the dark leaf image */
-      background: radial-gradient(ellipse 80% 70% at 50% 50%,
-        rgba(0,0,0,.72) 0%, rgba(0,0,0,.38) 52%, transparent 100%);
-    }
-    .j-eyebrow {
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: #fff;
-      text-shadow: 0 1px 8px rgba(0,0,0,1);
-      margin-bottom: 1.1rem;
-    }
-    .j-h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 6vw, 4.4rem);
-      font-weight: 700;
-      line-height: 1.07;
-      color: #fff;
-      text-shadow: 0 2px 28px rgba(0,0,0,.85);
-      margin-bottom: 1rem;
-    }
-    .j-h1 em { color: #4ade80; font-style: italic; }
-    .j-sub {
-      font-size: clamp(.82rem, 1.7vw, .97rem);
-      color: rgba(255,255,255,.82);
-      text-shadow: 0 1px 6px rgba(0,0,0,.9);
-      max-width: 400px;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Pruthvi Kalyandurg, PhD · Molecular Biologist & Founder</title>
+<meta name="description" content="Molecular biologist and biotech founder working across agricultural biotechnology, plant and pathogen biology, and translational science, taking fundamental biology from the lab to the field.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-    /* ── Stage highlight cards (appear on the images) ───────── */
-    .j-card {
-      position: absolute;
-      right: clamp(3rem, 6vw, 5rem);
-      top: 50%;
-      transform: translateY(-50%);
-      width: min(88vw, 320px);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 15;
-      background: rgba(0, 0, 0, .72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 14px;
-      padding: 1.6rem 1.5rem;
-    }
-    .j-card.j-card-active { pointer-events: all; }
-    .j-card-icon { font-size: 1.6rem; margin-bottom: .75rem; }
-    .j-card-label {
-      font-size: .62rem;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #4ade80;
-      margin-bottom: .35rem;
-    }
-    .j-card-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.25;
-      margin-bottom: .6rem;
-    }
-    .j-card-text {
-      font-size: .8rem;
-      line-height: 1.65;
-      color: rgba(255,255,255,.72);
-      margin-bottom: 1rem;
-    }
-    .j-card-link {
-      display: inline-block;
-      font-size: .78rem;
-      font-weight: 600;
-      color: #4ade80;
-      text-decoration: none;
-      letter-spacing: .02em;
-    }
-    .j-card-link:hover { color: #86efac; }
-    .j-ctas {
-      display: flex;
-      gap: 1rem;
-      pointer-events: all;
-    }
-    .j-btn-primary {
-      padding: .65rem 1.5rem;
-      background: #2D7A4F;
-      color: #fff;
-      border-radius: 6px;
-      font-size: .85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background .2s;
-    }
-    .j-btn-primary:hover { background: #1E5535; }
-    .j-btn-secondary {
-      padding: .65rem 1.5rem;
-      border: 1px solid rgba(255,255,255,.3);
-      color: rgba(255,255,255,.8);
-      border-radius: 6px;
-      font-size: .85rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: border-color .2s, color .2s;
-    }
-    .j-btn-secondary:hover { border-color: rgba(255,255,255,.6); color: #fff; }
-    .j-scroll-cue {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .4rem;
-      color: rgba(255,255,255,.28);
-      font-size: .62rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      animation: j-bob 2.3s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .j-scroll-cue svg { width: 17px; opacity: .45; }
-    @keyframes j-bob {
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(7px)}
-    }
-  </style>
+:root{
+  --bg:#faf8f4; --bg2:#f0ebe2; --bg3:#e8e1d6;
+  --line:rgba(28,26,23,0.12); --line2:rgba(28,26,23,0.05);
+  --text:#1c1a17; --muted:rgba(28,26,23,0.56); --faint:rgba(28,26,23,0.32);
+  --accent:#8a6120; --accent-soft:rgba(138,97,32,0.12); --pair:#4e8c60;
+  --canvas:#f5f0e8;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+}
+[data-theme="dark"]{
+  --bg:#0c0b0f; --bg2:#131217; --bg3:#17161c;
+  --line:rgba(240,236,227,0.14); --line2:rgba(240,236,227,0.05);
+  --text:#f0ece3; --muted:rgba(240,236,227,0.60); --faint:rgba(240,236,227,0.30);
+  --accent:#d4aa60; --accent-soft:rgba(212,170,96,0.14); --pair:#6faa86;
+  --canvas:#0c0b0f;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--sans); font-weight:300; line-height:1.7;
+  overflow-x:hidden; transition:background .5s ease, color .5s ease;
+}
+a{color:inherit}
+::selection{background:var(--accent-soft)}
+
+/* ── NAV ─────────────────────────────────────────── */
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:1.4rem clamp(1.5rem,4vw,3rem);
+  display:flex; justify-content:space-between; align-items:center;
+}
+nav::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom,var(--bg) 30%,transparent);
+  opacity:.92; pointer-events:none; transition:background .5s ease;
+}
+.nav-logo{
+  font-size:.78rem; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; text-decoration:none; color:var(--text);
+  position:relative; z-index:1;
+}
+.nav-right{display:flex; align-items:center; gap:clamp(1.2rem,3vw,2.4rem); position:relative; z-index:1}
+.nav-links{display:flex; gap:2.2rem; list-style:none}
+.nav-links a{
+  font-size:.75rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); text-decoration:none; transition:color .2s;
+}
+.nav-links a:hover{color:var(--text)}
+.theme-toggle{
+  background:none; border:1px solid var(--line); color:var(--muted);
+  width:34px; height:34px; border-radius:50%; cursor:pointer;
+  display:grid; place-items:center; transition:color .2s,border-color .2s;
+  font-size:.9rem; line-height:1;
+}
+.theme-toggle:hover{color:var(--text); border-color:var(--accent)}
+.nav-burger{display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; padding:4px}
+.nav-burger span{width:22px; height:1.5px; background:var(--text); transition:.3s}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero{
+  position:relative; min-height:100vh; display:flex; align-items:flex-end;
+  overflow:hidden; background:var(--canvas); transition:background .5s ease;
+}
+.hero-bg{position:absolute; inset:0; background:center/cover no-repeat; opacity:.5; z-index:0}
+[data-theme="dark"] .hero-bg{opacity:.34}
+#hero-canvas{position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0}
+.hero-veil{
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:linear-gradient(to bottom,transparent 35%,var(--bg) 100%);
+}
+.hero-inner{
+  position:relative; z-index:2; width:100%; max-width:var(--maxw);
+  margin:0 auto; padding:0 clamp(1.5rem,4vw,3rem) clamp(4rem,8vh,6.5rem);
+}
+.hero-label{
+  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:1.6rem;
+  display:flex; align-items:center; gap:.75rem;
+}
+.hero-label::before{content:''; width:2rem; height:1px; background:var(--accent)}
+.hero-title{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(2.6rem,6.6vw,6rem); line-height:1.04;
+  letter-spacing:-.02em; max-width:16ch; margin-bottom:1.8rem;
+}
+.hero-title em{font-style:italic; color:var(--accent)}
+.hero-sub{
+  font-size:clamp(1rem,1.4vw,1.12rem); color:var(--muted);
+  max-width:52ch; line-height:1.8; margin-bottom:2.6rem;
+}
+.cta-row{display:flex; flex-wrap:wrap; gap:1rem; align-items:center}
+.btn{
+  font-size:.74rem; letter-spacing:.11em; text-transform:uppercase;
+  text-decoration:none; padding:.9rem 1.8rem; transition:.25s; display:inline-block;
+}
+.btn-primary{background:var(--text); color:var(--bg); border:1px solid var(--text)}
+.btn-primary:hover{background:transparent; color:var(--text)}
+.btn-ghost{border:1px solid var(--line); color:var(--muted)}
+.btn-ghost:hover{color:var(--text); border-color:var(--accent)}
+.hero-meta{
+  position:absolute; bottom:clamp(2rem,4vh,3rem); right:clamp(1.5rem,4vw,3rem);
+  z-index:2; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--faint); writing-mode:vertical-rl;
+}
+
+/* ── MARQUEE ───────────────────────────────────────── */
+.marquee{
+  overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  background:var(--bg2); padding:1rem 0; transition:background .5s ease;
+}
+.marquee-track{display:flex; width:max-content; animation:scroll 38s linear infinite}
+.marquee-item{
+  white-space:nowrap; font-family:var(--serif); font-style:italic;
+  font-size:1.02rem; color:var(--muted); padding:0 1.6rem;
+}
+.marquee-item b{color:var(--accent); font-weight:400; margin-left:1.6rem}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION SCAFFOLD ──────────────────────────────── */
+.wrap{max-width:var(--maxw); margin:0 auto; padding:clamp(5rem,11vh,9rem) clamp(1.5rem,4vw,3rem)}
+.wrap-narrow{max-width:760px}
+.tag{
+  font-size:.7rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); display:flex; align-items:center; gap:.9rem; margin-bottom:2.4rem;
+}
+.tag::before{content:''; width:1.4rem; height:1px; background:var(--accent)}
+.divider{border:none; border-top:1px solid var(--line); max-width:var(--maxw); margin:0 auto}
+.alt{background:var(--bg2); transition:background .5s ease}
+
+/* ── ABOUT ─────────────────────────────────────────── */
+.about h2{
+  font-family:var(--serif); font-weight:400; letter-spacing:-.01em;
+  font-size:clamp(1.7rem,3.6vw,2.9rem); line-height:1.18; margin-bottom:2rem; max-width:20ch;
+}
+.about h2 em{font-style:italic; color:var(--accent)}
+.about p{font-size:1.02rem; color:var(--muted); line-height:1.9; max-width:60ch; margin-bottom:1.2rem}
+.stats{display:flex; flex-wrap:nowrap; gap:clamp(.7rem,3vw,2.4rem); margin-top:3rem; padding-top:2.2rem; border-top:1px solid var(--line); justify-content:space-between}
+.stat-label{white-space:nowrap}
+.stat-num{font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.6rem); line-height:1; color:var(--text)}
+.stat-label{font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:.6rem}
+
+/* ── RESEARCH THEMES ───────────────────────────────── */
+.theme-head{
+  font-family:var(--serif); font-weight:400; letter-spacing:-.01em;
+  font-size:clamp(1.6rem,3vw,2.5rem); line-height:1.2; max-width:18ch; margin-bottom:4.5rem;
+}
+.theme-head em{font-style:italic; color:var(--accent)}
+.theme-row{
+  display:grid; grid-template-columns:7rem 1fr; gap:clamp(1.5rem,4vw,4rem);
+  padding:3.4rem 0; border-top:1px solid var(--line); align-items:start;
+}
+.theme-row:last-child{border-bottom:1px solid var(--line)}
+.theme-num{font-family:var(--serif); font-size:2.4rem; color:var(--accent-soft); line-height:1}
+.theme-kicker{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem}
+.theme-title{font-family:var(--serif); font-weight:400; font-size:clamp(1.35rem,2.4vw,2rem); line-height:1.22; letter-spacing:-.01em; margin-bottom:1.1rem}
+.theme-title em{font-style:italic; color:var(--accent)}
+.theme-desc{font-size:.97rem; color:var(--muted); line-height:1.85; max-width:56ch}
+
+/* ── EDUCATION / DNA (scroll-driven) ───────────────── */
+.edu{position:relative}
+.edu-scroll{position:relative}
+.edu-sticky{
+  position:sticky; top:0; min-height:100vh;
+  display:grid; grid-template-columns:minmax(280px,420px) 1fr;
+  gap:clamp(2rem,5vw,5rem); align-items:center;
+  max-width:var(--maxw); margin:0 auto; padding:2rem clamp(1.5rem,4vw,3rem);
+}
+.edu-stage{position:relative; aspect-ratio:1/1.1; width:100%}
+#dna-canvas{position:absolute; inset:0; width:100%; height:100%; cursor:pointer}
+.edu-panel{position:relative}
+.edu-hint{margin-top:1.6rem; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--faint)}
+.edu-year{font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.1rem; display:flex; gap:.8rem; align-items:center}
+.edu-year::before{content:''; width:1.4rem; height:1px; background:var(--accent)}
+.edu-degree{font-family:var(--serif); font-weight:400; font-size:clamp(1.6rem,3vw,2.4rem); line-height:1.18; letter-spacing:-.01em; margin-bottom:.8rem}
+.edu-degree em{font-style:italic; color:var(--accent)}
+.edu-org{font-size:.95rem; color:var(--text); margin-bottom:1.4rem; opacity:.85}
+.edu-detail{font-size:.95rem; color:var(--muted); line-height:1.85; max-width:50ch}
+.edu-detail em{font-style:italic; color:var(--text); opacity:.8}
+.edu-fade{transition:opacity .45s ease, transform .45s ease}
+.edu-controls{display:flex; align-items:center; gap:1.4rem; margin-top:2.4rem}
+.edu-dots{display:flex; gap:.7rem}
+.edu-dot{
+  width:9px; height:9px; border-radius:50%; border:1px solid var(--accent);
+  background:transparent; cursor:pointer; padding:0; transition:.25s;
+}
+.edu-dot[aria-selected="true"]{background:var(--accent); transform:scale(1.25)}
+.edu-arrows{display:flex; gap:.5rem; margin-left:auto}
+.edu-arrow{
+  width:40px; height:40px; border:1px solid var(--line); background:none;
+  color:var(--muted); cursor:pointer; border-radius:50%; transition:.2s; font-size:1rem;
+}
+.edu-arrow:hover{color:var(--text); border-color:var(--accent)}
+.edu .wrap,.edu .edu-scroll{position:relative; z-index:2}
+.edu .venture-bg{opacity:.38}
+[data-theme="dark"] .edu .venture-bg{opacity:.22}
+
+/* ── PREVIEW (pubs / venture) ──────────────────────── */
+.preview-head{font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem,3.4vw,2.7rem); line-height:1.2; letter-spacing:-.01em; max-width:16ch; margin-bottom:1.4rem}
+.preview-head em{font-style:italic; color:var(--accent)}
+.preview-sub{font-size:1rem; color:var(--muted); line-height:1.85; max-width:54ch; margin-bottom:3.2rem}
+.feat-item{display:grid; grid-template-columns:4.5rem 1fr; gap:clamp(1rem,3vw,2.4rem); padding:2rem 0; border-top:1px solid var(--line); text-decoration:none}
+.feat-item:last-of-type{border-bottom:1px solid var(--line)}
+.feat-year{font-family:var(--serif); font-style:italic; font-size:.9rem; color:var(--accent); padding-top:.15rem}
+.feat-title{font-family:var(--serif); font-size:1.05rem; line-height:1.4; color:var(--text); margin-bottom:.4rem; transition:color .2s}
+.feat-item:hover .feat-title{color:var(--accent)}
+.feat-meta{font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted)}
+.feat-badge{display:inline-block; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent-soft); padding:.15rem .55rem; margin-left:.6rem; vertical-align:middle}
+.more-link{display:inline-flex; align-items:center; gap:.6rem; margin-top:2.6rem; font-size:.76rem; letter-spacing:.11em; text-transform:uppercase; color:var(--accent); text-decoration:none; transition:gap .25s}
+.more-link:hover{gap:1.1rem}
+
+/* ── VENTURE (full-bleed image) ────────────────────── */
+.venture{position:relative; overflow:hidden}
+.venture-bg{position:absolute; inset:0; background:var(--bg3) center/cover no-repeat; opacity:.5}
+[data-theme="dark"] .venture-bg{opacity:.32}
+.venture-veil{position:absolute; inset:0; background:linear-gradient(110deg,var(--bg) 32%,transparent 95%)}
+.venture .wrap{position:relative; z-index:2}
+.venture-stealth{font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.6rem}
+
+/* ── MICROSCOPY BAND ───────────────────────────────── */
+.scope-band{display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line); width:100%; overflow:hidden}
+.scope-band figure{margin:0; overflow:hidden; height:clamp(170px,30vh,330px)}
+.scope-band img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.88) brightness(.96); transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter 1.1s ease; will-change:transform}
+.scope-band figure:hover img{transform:scale(1.07); filter:saturate(1.12) brightness(1.02)}
+@media(max-width:880px){.scope-band{grid-template-columns:repeat(2,1fr)}}
+
+/* ── APPROACH ──────────────────────────────────────── */
+.approach-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0; margin-top:1rem; border-top:1px solid var(--line)}
+.approach-cell{padding:2.8rem 2.4rem 2.8rem 0; border-bottom:1px solid var(--line)}
+.approach-cell:nth-child(odd){padding-right:clamp(2rem,5vw,4rem)}
+.approach-cell:nth-child(even){padding-left:clamp(2rem,5vw,4rem); border-left:1px solid var(--line)}
+.approach-idx{font-family:var(--serif); font-style:italic; font-size:.9rem; color:var(--accent); margin-bottom:1rem}
+.approach-title{font-family:var(--serif); font-weight:400; font-size:1.3rem; line-height:1.3; margin-bottom:.9rem}
+.approach-text{font-size:.94rem; color:var(--muted); line-height:1.85}
+
+/* ── CONTACT ───────────────────────────────────────── */
+.contact{text-align:center}
+.contact h2{font-family:var(--serif); font-weight:400; font-size:clamp(2.6rem,8vw,6rem); line-height:1; letter-spacing:-.03em; margin-bottom:2rem}
+.contact h2 em{font-style:italic; color:var(--accent)}
+.contact-links{display:flex; flex-wrap:wrap; gap:.6rem 2.2rem; justify-content:center; font-size:.82rem; letter-spacing:.05em}
+.contact-links a{color:var(--muted); text-decoration:none; transition:color .2s; border-bottom:1px solid transparent; padding-bottom:2px}
+.contact-links a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
+/* ── FOOTER ────────────────────────────────────────── */
+footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); display:flex; justify-content:space-between; align-items:center; gap:1.5rem; flex-wrap:wrap}
+.footer-name{font-family:var(--serif); font-style:italic; font-size:.9rem; color:var(--muted)}
+.footer-links{display:flex; gap:1.8rem}
+.footer-links a{font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:.7rem; color:var(--faint)}
+
+/* ── REVEAL ────────────────────────────────────────── */
+.reveal{opacity:0; transform:translateY(1.6rem); transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1; transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media(max-width:880px){
+  .nav-links{
+    position:fixed; inset:0 0 auto; top:0; flex-direction:column; gap:1.8rem;
+    background:var(--bg); padding:6rem 2rem 2.5rem; transform:translateY(-100%);
+    transition:transform .4s ease; box-shadow:0 10px 40px rgba(0,0,0,.12);
+  }
+  .nav-links.open{transform:none}
+  .nav-burger{display:flex}
+  .hero-meta{display:none}
+  .theme-row{grid-template-columns:1fr; gap:1rem; padding:2.6rem 0}
+  .theme-num{font-size:1.8rem}
+  .edu-sticky{position:static; min-height:0; grid-template-columns:1fr; gap:2.5rem; padding:0}
+  .edu-scroll{height:auto!important}
+  .edu-stage{max-width:300px; margin:0 auto; aspect-ratio:1/1.2}
+  .edu-hint{display:none}
+  .approach-grid{grid-template-columns:1fr}
+  .approach-cell,.approach-cell:nth-child(even){padding:2.2rem 0; border-left:none}
+  footer{flex-direction:column; text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; scroll-behavior:auto!important}
+  .reveal{opacity:1; transform:none}
+}
+</style>
 </head>
 <body>
 
-<!-- ═══════════════════ NAV ═══════════════════ -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Pruthvi Kalyandurg, PhD<sub>Plant Scientist &amp; Entrepreneur</sub></a>
-    <ul class="nav-links" role="list">
-      <li><a href="about.html">About</a></li>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Pruthvi Kalyandurg</a>
+  <div class="nav-right">
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="publications.html">Publications</a></li>
-      <li><a href="microscopy.html">Microscopy</a></li>
-      <li><a href="photography.html">Photography</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="startup.html">Startup</a></li>
+      <li><a href="startup-news.html">Venture</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="nav-right">
-      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">☾</button>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- Mobile nav -->
-<div class="nav-mobile" role="navigation" aria-label="Mobile navigation">
-  <a href="about.html">About</a>
-  <a href="publications.html">Publications</a>
-  <a href="microscopy.html">Microscopy</a>
-  <a href="photography.html">Photography</a>
-  <a href="learn.html">Learn</a>
-  <a href="startup.html">Startup &amp; Innovation</a>
-</div>
-
-<!-- ═══════════════════ JOURNEY (Microscope Scroll Hero) ═══════════════════ -->
-<div id="journey" aria-label="Microscope journey from leaf to sporangia">
-  <div id="scope">
-
-    <!-- Image layers (0 = bottom, 4 = top) -->
-    <div class="j-layer" data-i="0"><div class="j-layer-bg"></div></div>
-    <div class="j-layer" data-i="1"><div class="j-layer-bg"></div></div>
-    <div class="j-layer" data-i="2"><div class="j-layer-bg"></div></div>
-    <div class="j-layer" data-i="3"><div class="j-layer-bg"></div></div>
-    <div class="j-layer" data-i="4"><div class="j-layer-bg"></div></div>
-
-    <!-- Vignette overlay -->
-    <div id="j-vig" aria-hidden="true"></div>
-
-    <!-- HUD (bottom-left) -->
-    <div id="j-hud" aria-hidden="true">
-      <div class="j-hud-block">
-        <div id="j-hud-title">Whole potato leaf</div>
-        <div id="j-hud-technique">BioRad ChemiDoc · fluorescence imaging</div>
-        <div id="j-hud-channel">GFP · Cy3</div>
-      </div>
+<!-- 01 · HERO -->
+<header class="hero">
+  <div class="hero-bg" style="background-image:url('images/Leaf.jpg')"></div>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Scientist · Entrepreneur · Photographer</div>
+    <h1 class="hero-title">Nature already holds the answers. The work is to <em>decode them</em>, and build.</h1>
+    <p class="hero-sub">
+      A decade spent at the genetic level of plant health: how disease takes hold, and how a plant's own biology becomes its protection. Now I translate that science out of the journal and into the field.
+    </p>
+    <div class="cta-row">
+      <a href="#education" class="btn btn-primary">Explore the work</a>
+      <a href="#contact" class="btn btn-ghost">Let's talk</a>
     </div>
+  </div>
+  <div class="hero-meta">Scroll to read</div>
+</header>
 
-    <!-- Stage dots (right edge) -->
-    <div id="j-dots" aria-hidden="true"></div>
-
-    <!-- Highlight cards — fade in over each stage's image -->
-    <div class="j-card" id="j-card-0" aria-hidden="true">
-      <div class="j-card-icon">🚀</div>
-      <div class="j-card-label">Innovation</div>
-      <div class="j-card-title">CTO &amp; Co-Founder</div>
-      <p class="j-card-text">Building a stealth biotech startup developing proprietary post-harvest solutions for the global cut flower and fresh produce industry. Advanced from TRL 1–2 to greenhouse validation.</p>
-      <a href="startup.html" class="j-card-link">Startup &amp; Innovation →</a>
-    </div>
-
-    <div class="j-card" id="j-card-1" aria-hidden="true">
-      <div class="j-card-icon">🔬</div>
-      <div class="j-card-label">Science</div>
-      <div class="j-card-title">Scientific Portfolio</div>
-      <p class="j-card-text">12+ peer-reviewed publications across plant pathology, RNA interference, and plant-microbe interactions. First to demonstrate SIGS-based protection from <em style="color:rgba(255,255,255,.85)">Phytophthora infestans</em>.</p>
-      <a href="publications.html" class="j-card-link">View Publications →</a>
-    </div>
-
-    <div class="j-card" id="j-card-2" aria-hidden="true">
-      <div class="j-card-icon">📷</div>
-      <div class="j-card-label">Storytelling</div>
-      <div class="j-card-title">Visual Portfolio</div>
-      <p class="j-card-text">Science through the lens — from confocal fluorescence microscopy of plant-pathogen interactions to macro and landscape photography across Sweden and beyond.</p>
-      <a href="photography.html" class="j-card-link">Explore Gallery →</a>
-    </div>
-
-    <!-- Intro overlay -->
-    <div id="j-intro">
-      <div class="j-eyebrow">Dr. Pruthvi Kalyandurg · Plant Scientist &amp; Entrepreneur</div>
-      <h1 class="j-h1">Seeing <em>biology</em><br>at every scale</h1>
-      <p class="j-sub">Scroll to journey through the world a plant scientist sees — from the whole leaf to the individual spore.</p>
-      <div class="j-ctas">
-        <a href="about.html" class="j-btn-primary">Explore My Work →</a>
-        <a href="publications.html" class="j-btn-secondary">Publications</a>
-      </div>
-      <div style="margin-top:2rem">
-        <div class="j-scroll-cue">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-          </svg>
-          scroll
-        </div>
-      </div>
-    </div>
-
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Molecular biology<b>·</b>Agricultural biotechnology<b>·</b>Pathogen &amp; fungal biology<b>·</b>Plant health<b>·</b>Translational science<b>·</b></span>
+    <span class="marquee-item">Molecular biology<b>·</b>Agricultural biotechnology<b>·</b>Pathogen &amp; fungal biology<b>·</b>Plant health<b>·</b>Translational science<b>·</b></span>
   </div>
 </div>
 
-
-<!-- ═══════════════════ NARRATIVE CONNECTOR ═══════════════════ -->
-<section style="padding:4.5rem 0;background:var(--bg)">
-  <div class="section-inner">
-    <div class="fade-in" style="text-align:center;max-width:560px;margin:0 auto 3rem">
-      <div class="section-label" style="justify-content:center;margin-bottom:.6rem">The Thread</div>
-      <h2 style="font-size:clamp(1.7rem,3.2vw,2.5rem);font-family:var(--serif);font-weight:800;line-height:1.2;color:var(--text);margin-bottom:1rem">Seeing Biology<br>at Every Scale</h2>
-      <p style="font-size:1rem;color:var(--muted);line-height:1.75">Everything I do — photography, microscopy, research, building — is one continuous act of observation. From mountain landscapes to individual molecules.</p>
-    </div>
-
-    <div class="narrative-grid fade-in">
-      <a href="photography.html" class="nc">
-        <div class="nc-scale">km · landscape</div>
-        <div class="nc-num">01</div>
-        <div class="nc-verb">I observe</div>
-        <div class="nc-desc">Landscape and macro photography across Sweden and beyond.</div>
-        <div class="nc-link">Photography →</div>
-      </a>
-      <a href="microscopy.html" class="nc">
-        <div class="nc-scale">µm · cell</div>
-        <div class="nc-num">02</div>
-        <div class="nc-verb">I zoom in</div>
-        <div class="nc-desc">Confocal fluorescence microscopy — making the invisible visible.</div>
-        <div class="nc-link">Microscopy →</div>
-      </a>
-      <a href="publications.html" class="nc">
-        <div class="nc-scale">nm · molecule</div>
-        <div class="nc-num">03</div>
-        <div class="nc-verb">I understand</div>
-        <div class="nc-desc">RNA biology and plant-pathogen research — 12+ publications.</div>
-        <div class="nc-link">Publications →</div>
-      </a>
-      <a href="startup.html" class="nc">
-        <div class="nc-scale">market · company</div>
-        <div class="nc-num">04</div>
-        <div class="nc-verb">I build</div>
-        <div class="nc-desc">Pre-seed biotech startup — translating a decade of science into impact.</div>
-        <div class="nc-link">Startup →</div>
-      </a>
-      <a href="about.html" class="nc">
-        <div class="nc-scale">global · supply chain</div>
-        <div class="nc-num">05</div>
-        <div class="nc-verb">I impact</div>
-        <div class="nc-desc">From a childhood in Anantapur to sustainable agriculture at scale.</div>
-        <div class="nc-link">About →</div>
-      </a>
+<!-- 02 · ABOUT -->
+<section id="about" class="about">
+  <div class="wrap wrap-narrow">
+    <div class="tag">About</div>
+    <h2 class="reveal">I work in the space between <em>fundamental biology</em> and the problems it can actually solve.</h2>
+    <p class="reveal d1">
+      My training is in the molecular machinery of plant health: how viruses move, how pathogens take hold, and how a plant's own defences become precise, residue-free protection. The thread running through it is a refusal to let good science sit on a shelf.
+    </p>
+    <p class="reveal d2">
+      Today I spend my time turning that decade of research into something that ships: building, testing, and reasoning about biology as a system rather than a set of isolated results. I move comfortably between the bench, the data, and the decisions a company has to make.
+    </p>
+    <div class="stats reveal d3">
+      <div><div class="stat-num">16+</div><div class="stat-label">Years in the lab</div></div>
+      <div><div class="stat-num">13</div><div class="stat-label">Peer-reviewed papers</div></div>
+      <div><div class="stat-num">9</div><div class="stat-label">Researchers mentored</div></div>
+      <div><div class="stat-num">12</div><div class="stat-label">Courses taught</div></div>
     </div>
   </div>
 </section>
 
-<style>
-.narrative-grid {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  overflow: hidden;
-}
-.nc {
-  display: flex; flex-direction: column;
-  padding: 1.75rem 1.25rem 1.5rem;
-  border-right: 1px solid var(--border);
-  text-decoration: none; color: inherit;
-  transition: background .18s;
-  background: var(--bg);
-}
-.nc:last-child { border-right: none; }
-.nc:hover { background: var(--surface); }
-.nc-scale {
-  font-size: .6rem; font-weight: 700;
-  letter-spacing: .12em; text-transform: uppercase;
-  color: var(--primary); margin-bottom: .85rem;
-}
-.nc-num {
-  font-size: .7rem; font-weight: 800;
-  color: var(--muted); opacity: .35;
-  margin-bottom: .2rem; font-family: 'JetBrains Mono', monospace;
-}
-.nc-verb {
-  font-size: 1.1rem; font-weight: 800;
-  color: var(--text); margin-bottom: .6rem; line-height: 1.2;
-}
-.nc-desc {
-  font-size: .8rem; line-height: 1.6;
-  color: var(--muted); flex: 1; margin-bottom: 1.25rem;
-}
-.nc-link { font-size: .75rem; font-weight: 700; color: var(--primary); }
-@media (max-width: 680px) {
-  .narrative-grid { grid-template-columns: 1fr 1fr; }
-  .nc { border-bottom: 1px solid var(--border); }
-  .nc:nth-child(2n) { border-right: none; }
-  .nc:last-child { grid-column: 1/-1; border-bottom: none; }
-}
-</style>
+<hr class="divider">
 
-<!-- ═══════════════════ ABOUT PREVIEW ═══════════════════ -->
-<section class="section">
-  <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
-      <div class="fade-in">
-        <div class="section-label">About</div>
-        <h2 class="section-title">Where Molecules Meet Markets</h2>
-        <p style="font-size:1.05rem;line-height:1.8;color:var(--muted);margin-bottom:1.5rem">
-          PhD from SLU Uppsala in plant virology, postdoc at SLU Alnarp pioneering RNA-based crop protection. Grew up watching farmers in Anantapur — still chasing the same problem, just closer to solving it.
-        </p>
-        <p style="font-size:1.05rem;line-height:1.8;color:var(--muted);margin-bottom:2rem">
-          Now CTO &amp; Co-Founder of a pre-seed biotech startup, translating a decade of research into real supply chain impact.
-        </p>
-        <a href="about.html" class="btn-primary">Full Profile →</a>
+<!-- 03 · RESEARCH THEMES -->
+<section id="research" class="venture">
+  <div class="venture-bg" style="background-image:url('images/Confocal-4.png')"></div>
+  <div class="venture-veil"></div>
+  <div class="wrap">
+    <div class="tag">Research Themes</div>
+    <h2 class="theme-head reveal">Five threads, one <em>question</em>: how a plant defends itself, and how we help.</h2>
+
+    <div class="theme-row reveal">
+      <div class="theme-num">01</div>
+      <div>
+        <div class="theme-kicker">RNA Biology</div>
+        <div class="theme-title">RNA silencing as a <em>defence system</em></div>
+        <p class="theme-desc">Plants and fungi can spot a threat and switch off the genes it needs to survive. I study how that built-in defence works, and how to aim it at one disease without leaving any chemical behind.</p>
       </div>
+    </div>
 
-      <div class="fade-in" style="display:flex;flex-direction:column;gap:1rem">
-        <!-- Education snapshot -->
-        <div style="padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md)">
-          <div class="section-label" style="margin-bottom:.75rem">Education</div>
-          <div style="display:flex;flex-direction:column;gap:.85rem">
-            <div>
-              <div style="font-weight:700;font-size:.92rem">PhD — Biology, Virology</div>
-              <div style="font-size:.82rem;color:var(--accent)">Swedish University of Agricultural Sciences, Uppsala · 2015–2019</div>
-            </div>
-            <div>
-              <div style="font-weight:700;font-size:.92rem">MSc — Biology</div>
-              <div style="font-size:.82rem;color:var(--accent)">Uppsala University · 2013–2014</div>
-            </div>
-            <div>
-              <div style="font-weight:700;font-size:.92rem">BTech — Biotechnology</div>
-              <div style="font-size:.82rem;color:var(--accent)">Kalasalingam University, India · 2007–2011</div>
-            </div>
-          </div>
-        </div>
+    <div class="theme-row reveal">
+      <div class="theme-num">02</div>
+      <div>
+        <div class="theme-kicker">Virology</div>
+        <div class="theme-title">How viruses <em>move and hide</em></div>
+        <p class="theme-desc">I spent years working out how plant viruses spread from cell to cell, why they change so quickly, and the tricks they use to switch off a plant's immune response.</p>
+      </div>
+    </div>
 
-        <!-- Quick facts -->
-        <div style="padding:1.5rem;background:var(--primary-light);border:1px solid rgba(45,122,79,.2);border-radius:var(--r-md)">
-          <div class="section-label" style="margin-bottom:.75rem">Quick Facts</div>
-          <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.88rem">
-            <div>📍 Uppsala, Sweden</div>
-            <div>🌱 RNA biology · Plant pathology · dsRNA crop protection</div>
-            <div>🏆 First to demonstrate biological SIGS protection vs. <em>P. infestans</em></div>
-            <div>📚 2 book chapters · 1 review article · 12+ research papers</div>
-            <div>🎓 7 master's interns &amp; 2 PhD students mentored</div>
-          </div>
-        </div>
+    <div class="theme-row reveal">
+      <div class="theme-num">03</div>
+      <div>
+        <div class="theme-kicker">Plant–Microbe Interactions</div>
+        <div class="theme-title">The <em>conversation</em> at the interface</div>
+        <p class="theme-desc">A plant is always trading signals with the microbes around it, some harmful and some helpful. I read that exchange to see what keeps a plant healthy and what makes it sick.</p>
+      </div>
+    </div>
+
+    <div class="theme-row reveal">
+      <div class="theme-num">04</div>
+      <div>
+        <div class="theme-kicker">Fungal Biology &amp; Biocontrol</div>
+        <div class="theme-title">Turning biology into <em>protection</em></div>
+        <p class="theme-desc">Some fungi protect plants by keeping disease in check. I study how they do it, and how to make that protection dependable enough to use on a real farm.</p>
+      </div>
+    </div>
+
+    <div class="theme-row reveal">
+      <div class="theme-num">05</div>
+      <div>
+        <div class="theme-kicker">Translational Science</div>
+        <div class="theme-title">From the journal <em>to the field</em></div>
+        <p class="theme-desc">Good lab results rarely reach a farmer on their own. My work closes that gap, taking a proven idea and turning it into something that works at scale.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ LATEST PUBLICATIONS ═══════════════════ -->
-<section class="section section-alt">
-  <div class="section-inner">
-    <div class="section-label">Research</div>
-    <h2 class="section-title">Recent Publications</h2>
-    <p class="section-sub">Selected highlights from 12+ peer-reviewed articles and 2 book chapters. <a href="publications.html" style="color:var(--primary);font-weight:600">View all →</a></p>
+<hr class="divider">
 
-    <div class="fade-in">
-      <!-- Pub 1 -->
-      <div class="pub-item pub-first" data-theme="rna plant-pathology">
-        <div class="pub-year">2021</div>
-        <div class="pub-body">
-          <div class="pub-title">
-            Spray-Induced Gene Silencing as a Potential Tool to Control Potato Late Blight Disease
-            <span class="first-badge">⭐ First Author</span>
-          </div>
-          <div class="pub-journal">Phytopathology</div>
-          <div class="pub-authors"><strong>Kalyandurg PB</strong>, Sundararajan P, Dubey M, et al.</div>
-          <div class="pub-tags">
-            <span class="pub-tag">dsRNA</span>
-            <span class="pub-tag">SIGS</span>
-            <span class="pub-tag">Phytophthora infestans</span>
-            <span class="pub-tag">Disease Control</span>
-          </div>
-          <a href="https://doi.org/10.1094/PHYTO-02-21-0054-SC" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1094/PHYTO-02-21-0054-SC ↗</a>
-        </div>
+<!-- EDUCATION / DNA INTERACTION (scroll-driven) -->
+<section id="education" class="alt edu" tabindex="-1">
+  <div class="venture-bg" style="background-image:url('images/confocal-6.jpeg')"></div>
+  <div class="venture-veil"></div>
+  <div class="wrap">
+    <div class="tag">Education &amp; Training</div>
+  </div>
+  <div class="edu-scroll" id="edu-scroll">
+    <div class="edu-sticky">
+      <div class="edu-stage">
+        <canvas id="dna-canvas" role="img" aria-label="Helix of education milestones. The highlighted base moves down as you scroll; arrow keys and the dots also move between stages."></canvas>
       </div>
-
-      <!-- Pub 2 -->
-      <div class="pub-item" data-theme="biocontrol rna">
-        <div class="pub-year">2024</div>
-        <div class="pub-body">
-          <div class="pub-title">RNA silencing is a key regulatory mechanism in the biocontrol fungus <em>Clonostachys rosea</em>–wheat interactions</div>
-          <div class="pub-journal">BMC Biology</div>
-          <div class="pub-authors">Piombo E, Vetukuri RR, Konakalla NC, <strong>Kalyandurg PB</strong>, et al.</div>
-          <div class="pub-tags">
-            <span class="pub-tag">RNA Silencing</span>
-            <span class="pub-tag">Biocontrol</span>
-            <span class="pub-tag">Cross-kingdom RNAi</span>
+      <div class="edu-panel">
+        <div class="edu-fade" id="edu-content" aria-live="polite"></div>
+        <div class="edu-controls">
+          <div class="edu-dots" id="edu-dots" role="tablist" aria-label="Education milestones"></div>
+          <div class="edu-arrows">
+            <button class="edu-arrow" id="edu-prev" aria-label="Previous milestone">↑</button>
+            <button class="edu-arrow" id="edu-next" aria-label="Next milestone">↓</button>
           </div>
-          <a href="https://doi.org/10.1186/s12915-024-02014-9" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1186/s12915-024-02014-9 ↗</a>
         </div>
+        <div class="edu-hint" aria-hidden="true">Scroll to advance ↓</div>
       </div>
-
-      <!-- Pub 3 -->
-      <div class="pub-item pub-first" data-theme="virology rna">
-        <div class="pub-year">2019</div>
-        <div class="pub-body">
-          <div class="pub-title">
-            Efficient RNA silencing suppression activity of Potato Mop-Top Virus 8K protein is driven by variability and positive selection
-            <span class="first-badge">⭐ First Author</span>
-          </div>
-          <div class="pub-journal">Virology</div>
-          <div class="pub-authors"><strong>Kalyandurg PB</strong>, Tahmasebi A, Vetukuri RR, et al.</div>
-          <div class="pub-tags">
-            <span class="pub-tag">PMTV</span>
-            <span class="pub-tag">RNA Silencing</span>
-            <span class="pub-tag">Plant Virus</span>
-          </div>
-          <a href="https://doi.org/10.1016/j.virol.2019.06.018" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1016/j.virol.2019.06.018 ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:2rem">
-      <a href="publications.html" class="btn-secondary">View All 13 Publications →</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ MICROSCOPY PREVIEW ═══════════════════ -->
-<section class="section">
-  <div class="section-inner">
-    <div class="section-label">Visual Science</div>
-    <h2 class="section-title">Microscopy Gallery</h2>
-    <p class="section-sub">Science seen through the lens — fluorescence, confocal, and histology images from peer-reviewed research.</p>
-
-    <div class="gallery-grid fade-in">
-      <div class="gallery-item" onclick="openLightbox('https://apsjournals.apsnet.org/cms/10.1094/PHYTO-02-21-0054-SC/asset/images/large/phyto-02-21-0054-scf1-1641541996666.jpeg', 'Spray-induced gene silencing — Phytophthora infestans on potato leaf')">
-        <img src="https://apsjournals.apsnet.org/cms/10.1094/PHYTO-02-21-0054-SC/asset/images/large/phyto-02-21-0054-scf1-1641541996666.jpeg" alt="SIGS — Phytophthora infestans on potato" loading="lazy">
-        <div class="gallery-overlay">
-          <span class="tech">Microscopy · Published</span>
-          <h3>Potato Late Blight (SIGS)</h3>
-          <p>Phytophthora infestans infection on potato leaf after dsRNA spray treatment — Phytopathology, 2021</p>
-        </div>
-      </div>
-
-      <div class="gallery-item" onclick="openLightbox('https://onlinelibrary.wiley.com/cms/asset/a56c7fe3-2de9-46bb-80d6-17c2e691150e/pbi70339-fig-0004-m.jpg', 'Confocal microscopy — Cyprosin B subcellular localisation in N. benthamiana')">
-        <img src="https://onlinelibrary.wiley.com/cms/asset/a56c7fe3-2de9-46bb-80d6-17c2e691150e/pbi70339-fig-0004-m.jpg" alt="Confocal — Cyprosin B subcellular localisation" loading="lazy">
-        <div class="gallery-overlay">
-          <span class="tech">Confocal Fluorescence</span>
-          <h3>Subcellular Localisation</h3>
-          <p>Cyprosin B localisation in <em>Nicotiana benthamiana</em> — Plant Biotechnology Journal, 2025</p>
-        </div>
-      </div>
-
-      <div class="gallery-item" onclick="openLightbox('https://static.wixstatic.com/media/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png/v1/fill/w_1344,h_1044,al_c,q_90,enc_avif,quality_auto/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png', 'Confocal microscopy — plant-pathogen interaction imaging')">
-        <img src="https://static.wixstatic.com/media/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png/v1/fill/w_1344,h_1044,al_c,q_90,enc_avif,quality_auto/f30d75_cf5aae864fb340babb3e67e9b87e9dff~mv2.png" alt="Confocal microscopy image" loading="lazy">
-        <div class="gallery-overlay">
-          <span class="tech">Confocal Fluorescence</span>
-          <h3>Plant-Pathogen Interaction</h3>
-          <p>Fluorescence confocal imaging of plant cellular structures during pathogen interaction</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:2rem">
-      <a href="microscopy.html" class="btn-secondary">Explore Full Gallery →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ LEARN PREVIEW ═══════════════════ -->
-<section class="section section-alt">
-  <div class="section-inner">
-    <div class="section-label">Education</div>
-    <h2 class="section-title">Learn Something New</h2>
-    <p class="section-sub">Plant science made accessible — short articles explaining the biology behind the research.</p>
-
-    <div class="grid-3 fade-in">
-      <div class="learn-card">
-        <div class="learn-header lh-pathology">
-          <h3>What is Plant Pathology?</h3>
-        </div>
-        <div class="learn-body">
-          <span class="learn-category">Plant Pathology</span>
-          <p>Plants get sick too. Plant pathology is the science of understanding plant diseases — what causes them, how they spread, and how we can stop them from destroying our food supply.</p>
-          <a href="learn.html#pathology" class="learn-read">Read more →</a>
-        </div>
-      </div>
-
-      <div class="learn-card">
-        <div class="learn-header lh-rna">
-          <h3>What is RNA Interference (RNAi)?</h3>
-        </div>
-        <div class="learn-body">
-          <span class="learn-category">RNA Biology</span>
-          <p>A natural cellular defence mechanism that uses tiny RNA molecules to silence specific genes — and a powerful tool for next-generation crop protection without chemicals.</p>
-          <a href="learn.html#rnai" class="learn-read">Read more →</a>
-        </div>
-      </div>
-
-      <div class="learn-card">
-        <div class="learn-header lh-microscopy">
-          <h3>Why Microscopy Matters in Plant Science</h3>
-        </div>
-        <div class="learn-body">
-          <span class="learn-category">Microscopy</span>
-          <p>From understanding how viruses move through cells to imaging fungal invasion in real time — microscopy turns invisible biology into stunning, informative images.</p>
-          <a href="learn.html#microscopy" class="learn-read">Read more →</a>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:2rem">
-      <a href="learn.html" class="btn-secondary">All Articles →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
-<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:1.5rem" onclick="closeLightbox()">
-  <div onclick="event.stopPropagation()" style="max-width:880px;width:100%">
-    <img src="" alt="" style="width:100%;border-radius:8px;max-height:80vh;object-fit:contain">
-    <p class="lb-caption" style="color:rgba(255,255,255,.7);font-size:.85rem;margin-top:.75rem;text-align:center"></p>
-    <button onclick="closeLightbox()" style="position:fixed;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.15);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer">✕</button>
-  </div>
+<!-- MICROSCOPY BAND -->
+<div class="scope-band" aria-hidden="true">
+  <figure><img src="images/sterio.jpeg" alt="" loading="lazy"></figure>
+  <figure><img src="images/confocal%20-3.jpeg" alt="" loading="lazy"></figure>
+  <figure><img src="images/Confocal-5.png" alt="" loading="lazy"></figure>
+  <figure><img src="images/Confocal%20-2.avif" alt="" loading="lazy"></figure>
 </div>
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-top">
+<!-- 05 · PUBLICATIONS PREVIEW -->
+<section id="publications">
+  <div class="wrap">
+    <div class="tag">Publications</div>
+    <h2 class="preview-head reveal">A decade of work, <em>in the record</em>.</h2>
+    <p class="preview-sub reveal d1">Thirteen peer-reviewed papers and two book chapters across plant pathology, RNA biology, and plant-microbe interactions, including first-author work that opened new ground in RNA-based crop protection.</p>
+
+    <a class="feat-item reveal" href="publications.html">
+      <div class="feat-year">2021</div>
       <div>
-        <div class="footer-brand-name">Pruthvi Kalyandurg</div>
-        <p class="footer-brand-tagline">Plant scientist, entrepreneur, and photographer. Building sustainable plant protection technologies from Uppsala, Sweden.</p>
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener" title="LinkedIn">in</a>
-          <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener" title="Google Scholar">GS</a>
-          <a href="https://www.instagram.com/pruthvikalyandurg/" target="_blank" rel="noopener" title="Instagram">📷</a>
-          <a href="https://www.instagram.com/arrestomomentumphotography" target="_blank" rel="noopener" title="Photography Instagram">🌿</a>
-        </div>
+        <div class="feat-title">Spray-Induced Gene Silencing as a Potential Tool to Control Potato Late Blight Disease<span class="feat-badge">First author · Landmark</span></div>
+        <div class="feat-meta">Phytopathology</div>
       </div>
+    </a>
+    <a class="feat-item reveal d1" href="publications.html">
+      <div class="feat-year">2019</div>
       <div>
-        <div class="footer-col-title">Navigate</div>
-        <ul class="footer-links">
-          <li><a href="about.html">About Me</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="microscopy.html">Microscopy</a></li>
-          <li><a href="photography.html">Photography</a></li>
-        </ul>
+        <div class="feat-title">Efficient RNA silencing suppression activity of Potato Mop-Top Virus 8K protein is driven by variability and positive selection<span class="feat-badge">First author</span></div>
+        <div class="feat-meta">Virology</div>
       </div>
+    </a>
+    <a class="feat-item reveal d2" href="publications.html">
+      <div class="feat-year">2024</div>
       <div>
-        <div class="footer-col-title">More</div>
-        <ul class="footer-links">
-          <li><a href="learn.html">Learn</a></li>
-          <li><a href="startup.html">Startup</a></li>
-        </ul>
+        <div class="feat-title">RNA silencing is a key regulatory mechanism in the biocontrol fungus <em>Clonostachys rosea</em> and wheat interactions</div>
+        <div class="feat-meta">BMC Biology</div>
       </div>
-      <div>
-        <div class="footer-col-title">External</div>
-        <ul class="footer-links">
-          <li><a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-          <li><a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a></li>
-          <li><a href="https://www.researchgate.net/profile/Pruthvi_Kalyandurg" target="_blank" rel="noopener">ResearchGate ↗</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 Pruthvi Kalyandurg · Uppsala, Sweden</span>
-      <span style="opacity:.4">Science × Nature × Innovation</span>
+    </a>
+
+    <a href="publications.html" class="more-link reveal">View all publications →</a>
+  </div>
+</section>
+
+<!-- 06 · VENTURE PREVIEW -->
+<section id="venture" class="venture">
+  <div class="venture-bg" style="background-image:url('images/Confocal.jpg')"></div>
+  <div class="venture-veil"></div>
+  <div class="wrap wrap-narrow">
+    <div class="venture-stealth">Current focus · Stealth biotech venture</div>
+    <h2 class="preview-head reveal">From the greenhouse to <em>the supply chain</em>.</h2>
+    <p class="preview-sub reveal d1">
+      I co-founded an early-stage venture to take a decade of research out of the lab: a confidential translational program addressing the loss of crops between harvest and use, a problem that costs the global supply chain billions each year. The approach is biology-based, precise, and leaves no chemical residue.
+    </p>
+    <p class="preview-sub reveal d2" style="margin-bottom:2.4rem">
+      What began as applied research is now a venture with a team and real-world validation behind it. I keep an open field-notes log of the parts I can share: the science, the decisions, and the conviction.
+    </p>
+    <a href="startup-news.html" class="more-link reveal">Read the field notes →</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact">
+    <div class="tag" style="justify-content:center">Contact</div>
+    <h2 class="reveal">Let's <em>talk.</em></h2>
+    <div class="contact-links reveal d1">
+      <a href="mailto:pruthvi.balachandra@gmail.com">pruthvi.balachandra@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
     </div>
   </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Dr. Pruthvi Kalyandurg, PhD</div>
+  <div class="footer-links">
+    <a href="publications.html">Publications</a>
+    <a href="startup-news.html">Venture</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© <span id="year"></span> Pruthvi Kalyandurg · Uppsala, Sweden</div>
 </footer>
 
-<script src="script.js"></script>
-
 <script>
-/* ── Microscope Journey ───────────────────────────────────── */
-(function () {
-  const STAGES = [
-    { title: 'Whole potato leaf',         technique: 'BioRad ChemiDoc · fluorescence imaging',  channel: 'GFP · Cy3',                        vignette: 0.00 },
-    { title: 'Infected leaf tissue',      technique: 'Stereomicroscope · Trypan blue staining',  channel: '',                                  vignette: 0.28 },
-    { title: 'Fungal mycelia at stomata', technique: 'Confocal fluorescence microscopy',          channel: 'GFP · Chlorophyll autofluorescence', vignette: 0.60 },
-    { title: 'Pathogen mycelia & sporangia', technique: 'Confocal fluorescence microscopy',       channel: 'GFP · Cy3',                         vignette: 0.82 },
-    { title: 'Sporangia — close view',    technique: 'Confocal · zoomed region',                  channel: 'GFP',                               vignette: 0.00 },
+/* ── THEME ─────────────────────────────────────────── */
+(function(){
+  const root=document.documentElement, btn=document.getElementById('theme-toggle');
+  const stored=localStorage.getItem('theme');
+  const sys=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const init=stored || (sys?'dark':'light');
+  root.setAttribute('data-theme',init); btn.textContent=init==='dark'?'☀':'☾';
+  btn.addEventListener('click',()=>{
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next); btn.textContent=next==='dark'?'☀':'☾';
+    localStorage.setItem('theme',next);
+  });
+})();
+
+/* ── NAV ───────────────────────────────────────────── */
+(function(){
+  const burger=document.getElementById('burger'), links=document.getElementById('navlinks');
+  burger.addEventListener('click',()=>{
+    const open=links.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');burger.setAttribute('aria-expanded','false')}));
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+
+/* ── REVEAL ────────────────────────────────────────── */
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+const REDUCE=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── HERO SEQUENCE FIELD ───────────────────────────── */
+(function(){
+  const cv=document.getElementById('hero-canvas'); if(!cv) return;
+  const ctx=cv.getContext('2d'); let W,H,DPR,t=0;
+  let accent,pair,bg,ink;
+  function refresh(){const s=getComputedStyle(document.documentElement);accent=s.getPropertyValue('--accent').trim();pair=s.getPropertyValue('--pair').trim();bg=s.getPropertyValue('--canvas').trim();ink=s.getPropertyValue('--text').trim()}
+  refresh();
+  new MutationObserver(refresh).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  const strands=[]; const NS=5;
+  for(let i=0;i<NS;i++) strands.push({y:0.15+Math.random()*0.7,amp:30+Math.random()*60,freq:.5+Math.random()*1.2,phase:Math.random()*7,speed:.1+Math.random()*.25});
+  const nodes=[]; const NN=44;
+  for(let i=0;i<NN;i++) nodes.push({x:Math.random(),y:Math.random(),r:1+Math.random()*2.4,vx:(Math.random()-.5)*.0004,vy:(Math.random()-.5)*.0003,pulse:Math.random()*7});
+
+  function size(){DPR=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
+  size(); addEventListener('resize',size);
+
+  function hex(c,a){c=(c||'#8a6120').replace('#','');if(c.length===3)c=c.split('').map(x=>x+x).join('');const r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);return`rgba(${r},${g},${b},${a})`}
+  function frame(){
+    t+=REDUCE?0:0.006;
+    ctx.clearRect(0,0,W,H);
+    strands.forEach((s,si)=>{
+      ctx.beginPath();
+      for(let x=-20;x<=W+20;x+=6){
+        const y=s.y*H + Math.sin(x*0.006*s.freq+t*s.speed+s.phase)*s.amp;
+        x===-20?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle=hex(si%2?pair:accent,0.16); ctx.lineWidth=1.1; ctx.stroke();
+    });
+    for(let i=0;i<strands.length-1;i++){
+      const a=strands[i],b=strands[i+1];
+      for(let x=20;x<W;x+=46){
+        const ya=a.y*H+Math.sin(x*0.006*a.freq+t*a.speed+a.phase)*a.amp;
+        const yb=b.y*H+Math.sin(x*0.006*b.freq+t*b.speed+b.phase)*b.amp;
+        if(Math.abs(ya-yb)<70){ctx.beginPath();ctx.moveTo(x,ya);ctx.lineTo(x,yb);ctx.strokeStyle=hex(ink,0.05);ctx.lineWidth=1;ctx.stroke()}
+      }
+    }
+    nodes.forEach(n=>{
+      n.x+=n.vx;n.y+=n.vy;
+      if(n.x<-.02)n.x=1.02;if(n.x>1.02)n.x=-.02;if(n.y<-.02)n.y=1.02;if(n.y>1.02)n.y=-.02;
+      const a=0.18+Math.sin(t*1.4+n.pulse)*0.12;
+      ctx.beginPath();ctx.arc(n.x*W,n.y*H,n.r,0,7);ctx.fillStyle=hex(accent,Math.max(0.05,a));ctx.fill();
+    });
+    if(!REDUCE) requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ── EDUCATION DNA INTERACTION ─────────────────────── */
+(function(){
+  const MILES=[
+    {year:'2007 – 2011 · Tamil Nadu, India',degree:'B.Tech, <em>Biotechnology</em>',org:'Kalasalingam University',detail:'The first reading frame. My thesis mapped the genetic diversity of French bean varieties, an early taste of reading biology through its sequence.'},
+    {year:'2011 – 2013 · India',degree:'Leadership &amp; <em>People Development</em>',org:'Landmark Worldwide · Loksatta Party',detail:'Before going back to science, I led training programmes at Landmark Worldwide, developing people and producing large live events. I also served as an executive member of the Loksatta political party. Years that taught me how to move people toward a shared goal.'},
+    {year:'2013 – 2014 · Uppsala, Sweden',degree:'M.Sc, <em>Biology</em>',org:'Uppsala University',detail:'A thesis on how the hormone abscisic acid shapes root development in Arabidopsis, with Dr. Annelie Carlsbecker. Learning how a few signals decide a plant’s whole architecture.'},
+    {year:'2015 – 2019 · Uppsala, Sweden',degree:'Ph.D, <em>Biology · Virology</em>',org:'Swedish University of Agricultural Sciences (SLU)',detail:'Four years inside the machinery of plant viruses, with Prof. Eugene Savenkov. My thesis covered how Potato mop-top virus varies, moves, and shuts down a plant’s defences.'},
+    {year:'2020 – 2024 · Alnarp, Sweden',degree:'Postdoctoral <em>Research</em>',org:'SLU · Department of Plant Breeding',detail:'I built the experimental backbone for biology-based crop protection: molecular diagnostics, confocal microscopy, and the first demonstration of this protection against the potato late-blight pathogen.'},
+    {year:'2025 – present · Uppsala, Sweden',degree:'Founder, <em>by training</em>',org:'Translational science',detail:'Carrying a decade of RNA biology out of the lab. The same instinct, read carefully and build deliberately, now applied to an early-stage venture.'}
   ];
-  const N = STAGES.length;
+  const cv=document.getElementById('dna-canvas');
+  const content=document.getElementById('edu-content');
+  const dotsWrap=document.getElementById('edu-dots');
+  if(!cv) return;
+  const ctx=cv.getContext('2d');
+  let W,H,DPR,active=0,activeF=0,idle=0;
+  const N=MILES.length;
+  const track=document.getElementById('edu-scroll');
+  const mqM=window.matchMedia('(max-width:880px)');
+  function scrollMode(){return !REDUCE && !mqM.matches}
+  let accent,pair,ink;
+  function refresh(){const s=getComputedStyle(document.documentElement);accent=s.getPropertyValue('--accent').trim();pair=s.getPropertyValue('--pair').trim();ink=s.getPropertyValue('--text').trim();}
+  refresh();
+  new MutationObserver(()=>{refresh();if(REDUCE)drawStatic()}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
-  const journey  = document.getElementById('journey');
-  const layers   = [...document.querySelectorAll('.j-layer')];
-  const layerBgs = [...document.querySelectorAll('.j-layer-bg')];
-  const vig      = document.getElementById('j-vig');
-  const intro    = document.getElementById('j-intro');
-  const dotsWrap = document.getElementById('j-dots');
-  const hudTitle     = document.getElementById('j-hud-title');
-  const hudTechnique = document.getElementById('j-hud-technique');
-  const hudChannel   = document.getElementById('j-hud-channel');
+  function hex(c,a){c=(c||'#8a6120').replace('#','');if(c.length===3)c=c.split('').map(x=>x+x).join('');const r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);return`rgba(${r},${g},${b},${a})`}
+  function setTrackHeight(){track.style.height = scrollMode() ? (window.innerHeight + (N-1)*window.innerHeight*0.62)+'px' : 'auto'}
+  function size(){DPR=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);setTrackHeight();if(REDUCE)drawStatic()}
+  size(); addEventListener('resize',size);
 
-  if (!journey) return;   // safety — only runs on pages that have the journey
-
-  // Build dots
-  STAGES.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'j-dot' + (i === 0 ? ' on' : '');
+  MILES.forEach((m,i)=>{
+    const d=document.createElement('button');
+    d.className='edu-dot';d.setAttribute('role','tab');
+    d.setAttribute('aria-label',m.degree.replace(/<[^>]+>/g,''));
+    d.addEventListener('click',()=>goTo(i));
     dotsWrap.appendChild(d);
   });
-  const dots = [...dotsWrap.querySelectorAll('.j-dot')];
+  const dots=[...dotsWrap.children];
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
-  function clamp(x, lo, hi) { return Math.max(lo, Math.min(hi, x)); }
+  function render(i){
+    const m=MILES[i];
+    content.style.opacity=0;content.style.transform='translateY(8px)';
+    setTimeout(()=>{
+      content.innerHTML=`<div class="edu-year">${m.year}</div>
+        <div class="edu-degree">${m.degree}</div>
+        <div class="edu-org">${m.org}</div>
+        <p class="edu-detail">${m.detail}</p>`;
+      content.style.opacity=1;content.style.transform='none';
+    },REDUCE?0:200);
+    dots.forEach((d,k)=>d.setAttribute('aria-selected',k===i?'true':'false'));
+  }
+  function setActive(i){i=((i%N)+N)%N;if(i!==active){active=i;render(i)}}
 
-  function getStageFloat() {
-    const top   = journey.getBoundingClientRect().top;
-    const total = journey.offsetHeight - window.innerHeight;
-    return Math.max(0, Math.min(N, (-top / total) * N));
+  /* scroll progress → continuous glow position + active index */
+  function onScroll(){
+    if(!scrollMode()) return;
+    const total=track.offsetHeight-window.innerHeight;
+    const passed=Math.min(Math.max(-track.getBoundingClientRect().top,0),total);
+    const p=total>0?passed/total:0;
+    activeF=p*(N-1);
+    setActive(Math.round(activeF));
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+
+  function goTo(i){
+    i=Math.max(0,Math.min(N-1,i));
+    if(scrollMode()){
+      const total=track.offsetHeight-window.innerHeight;
+      const trackTop=track.getBoundingClientRect().top+window.scrollY;
+      window.scrollTo({top:trackTop + (N>1?(i/(N-1))*total:0), behavior:'smooth'});
+    } else { activeF=i; setActive(i); drawStatic(); }
   }
 
-  // Overlapping cross-fade — no black gaps between transitions
-  function layerOpacity(i, sf) {
-    const sp = sf - i;
-    const BEFORE = 0.3, HOLD_IN = 0.2, HOLD_OUT = 0.8, AFTER = 0.3;
-    const FDUR  = BEFORE + HOLD_IN;
-    const FODUR = (1 - HOLD_OUT) + AFTER;
-
-    if (i === 0) {
-      if (sp < HOLD_OUT)    return 1;
-      if (sp < 1 + AFTER)   return 1 - (sp - HOLD_OUT) / FODUR;
-      return 0;
+  function draw(){
+    idle += scrollMode()?0.0016:0.004;
+    ctx.clearRect(0,0,W,H);
+    const cx=W*0.5, top=H*0.10, bot=H*0.90, span=bot-top;
+    const R=Math.min(W*0.30,150);
+    function strand(off,color){
+      ctx.beginPath();
+      for(let s=0;s<=120;s++){
+        const f=s/120, y=top+span*f;
+        const a=idle + f*(Math.PI*2*((N-1)/N)) - activeF*(Math.PI*2/N) + off;
+        const x=cx+Math.cos(a)*R;
+        s===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle=color;ctx.lineWidth=1.4;ctx.stroke();
     }
-    if (i === N - 1) {
-      if (sp < -BEFORE)  return 0;
-      if (sp < HOLD_IN)  return (sp + BEFORE) / FDUR;
-      return 1;
+    strand(0,hex(accent,0.32));
+    strand(Math.PI,hex(pair,0.30));
+    const pts=[];
+    for(let i=0;i<N;i++){
+      const a=idle + i*(Math.PI*2/N) - activeF*(Math.PI*2/N);
+      const y=top+span*(i/(N-1));
+      pts.push({i,x:cx+Math.cos(a)*R,y,z:Math.sin(a),a});
     }
-    if (sp < -BEFORE)    return 0;
-    if (sp < HOLD_IN)    return (sp + BEFORE) / FDUR;
-    if (sp < HOLD_OUT)   return 1;
-    if (sp < 1 + AFTER)  return 1 - (sp - HOLD_OUT) / FODUR;
-    return 0;
+    pts.forEach(p=>{const x2=cx+Math.cos(p.a+Math.PI)*R;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(x2,p.y);ctx.strokeStyle=hex(ink,0.10);ctx.lineWidth=1;ctx.stroke()});
+    pts.slice().sort((a,b)=>a.z-b.z).forEach(p=>{
+      const lit=Math.max(0,1-Math.abs(p.i-activeF));
+      const depth=(p.z+1)/2, r=4+depth*5+lit*5;
+      if(lit>0.01){
+        const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,34);
+        g.addColorStop(0,hex(accent,0.30*lit));g.addColorStop(1,hex(accent,0));
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,34,0,7);ctx.fill();
+        const a2=p.a+Math.PI,x2=cx+Math.cos(a2)*R,d2=(Math.sin(a2)+1)/2;
+        ctx.beginPath();ctx.arc(x2,p.y,4+d2*4,0,7);ctx.fillStyle=hex(pair,(0.45+d2*0.4)*Math.max(0.3,lit));ctx.fill();
+      }
+      ctx.beginPath();ctx.arc(p.x,p.y,r,0,7);
+      ctx.fillStyle = lit>0.01 ? hex(accent,0.4+0.6*lit) : hex(ink,0.10+depth*0.18);
+      ctx.fill();
+      if(lit>0.5){ctx.lineWidth=1.5;ctx.strokeStyle=hex(accent,0.9*lit);ctx.stroke()}
+    });
+    requestAnimationFrame(draw);
   }
-
-  function layerScale(i, sf) {
-    const sp = Math.max(0, Math.min(1, sf - i));
-    return 1 + sp * 0.09;
-  }
-
-  function setVignette(amount) {
-    if (amount < 0.02) { vig.style.background = 'none'; return; }
-    const r1 = lerp(100, 46, amount);
-    const r2 = lerp(115, 68, amount);
-    vig.style.background =
-      `radial-gradient(ellipse ${r1.toFixed(1)}% ${r1.toFixed(1)}% at center,` +
-      ` transparent 0%, transparent ${(r1 - 4).toFixed(1)}%,` +
-      ` rgba(0,0,0,${(amount * 0.78).toFixed(3)}) ${r2.toFixed(1)}%,` +
-      ` rgba(0,0,0,${amount.toFixed(3)}) 100%)`;
-  }
-
-  // Cards — one per stage (stages 1, 2, 3)
-  const cards = [
-    document.getElementById('j-card-0'),
-    document.getElementById('j-card-1'),
-    document.getElementById('j-card-2'),
-  ];
-
-  // Card opacity: each card lives during its stage zone [1,2], [2,3], [3,4]
-  function cardOpacity(cardIdx, sf) {
-    const base = cardIdx + 1;     // stage 1, 2, 3
-    const sp   = sf - base;       // position within that zone
-    const FADE = 0.3;
-    if (sp < 0)         return 0;
-    if (sp < FADE)      return sp / FADE;
-    if (sp < 1 - FADE)  return 1;
-    if (sp < 1)         return 1 - (sp - (1 - FADE)) / FADE;
-    return 0;
-  }
-
-  let prevHudIdx = -1;
-  function updateHUD(sf) {
-    const idx = clamp(Math.round(sf), 0, N - 1);
-    if (idx === prevHudIdx) return;
-    prevHudIdx = idx;
-    const s = STAGES[idx];
-    hudTitle.textContent     = s.title;
-    hudTechnique.textContent = s.technique;
-    hudChannel.textContent   = s.channel;
-    dots.forEach((d, i) => d.classList.toggle('on', i === idx));
-  }
-
-  function updateIntro(sf) {
-    const op = clamp(1 - sf / 0.32, 0, 1);
-    intro.style.opacity    = op;
-    intro.style.visibility = op < 0.01 ? 'hidden' : 'visible';
-  }
-
-  let prevSf = -1;
-  function render() {
-    const sf = getStageFloat();
-    if (Math.abs(sf - prevSf) > 0.0002) {
-      prevSf = sf;
-      layers.forEach((layer, i) => {
-        layer.style.opacity = layerOpacity(i, sf).toFixed(4);
-        layerBgs[i].style.transform = `scale(${layerScale(i, sf).toFixed(4)})`;
-      });
-      const si   = clamp(Math.floor(sf), 0, N - 2);
-      const frac = clamp(sf - si, 0, 1);
-      setVignette(lerp(STAGES[si].vignette, STAGES[si + 1].vignette, frac));
-      updateHUD(sf);
-      updateIntro(sf);
-      // Animate highlight cards
-      cards.forEach((card, i) => {
-        const op = cardOpacity(i, sf);
-        card.style.opacity    = op.toFixed(4);
-        card.style.visibility = op < 0.01 ? 'hidden' : 'visible';
-        card.classList.toggle('j-card-active', op > 0.01);
-        card.setAttribute('aria-hidden', op < 0.01 ? 'true' : 'false');
-      });
+  function drawStatic(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W*0.5,top=H*0.1,bot=H*0.9,span=bot-top,R=Math.min(W*0.22,90);
+    ctx.beginPath();ctx.moveTo(cx-R,top);ctx.lineTo(cx-R,bot);ctx.strokeStyle=hex(accent,0.3);ctx.lineWidth=1.4;ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx+R,top);ctx.lineTo(cx+R,bot);ctx.strokeStyle=hex(pair,0.3);ctx.lineWidth=1.4;ctx.stroke();
+    for(let i=0;i<N;i++){
+      const y=top+span*(i/(N-1));
+      ctx.beginPath();ctx.moveTo(cx-R,y);ctx.lineTo(cx+R,y);ctx.strokeStyle=hex(ink,0.1);ctx.stroke();
+      const on=i===active;
+      ctx.beginPath();ctx.arc(cx-R,y,on?8:5,0,7);ctx.fillStyle=on?accent:hex(ink,0.18);ctx.fill();
+      ctx.beginPath();ctx.arc(cx+R,y,on?7:5,0,7);ctx.fillStyle=on?pair:hex(ink,0.18);ctx.fill();
     }
-    requestAnimationFrame(render);
   }
-  render();
-}());
+
+  document.getElementById('edu-next').addEventListener('click',()=>goTo(active+1));
+  document.getElementById('edu-prev').addEventListener('click',()=>goTo(active-1));
+  cv.addEventListener('click',()=>goTo(active+1));
+  document.getElementById('education').addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goTo(active+1)}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(active-1)}
+  });
+  mqM.addEventListener('change',()=>{setTrackHeight();if(REDUCE||!scrollMode())drawStatic()});
+
+  render(0);
+  if(REDUCE){drawStatic()}else{draw()}
+  onScroll();
+})();
 </script>
 </body>
 </html>

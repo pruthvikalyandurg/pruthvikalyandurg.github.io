@@ -1,289 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publications — Dr. Pruthvi Kalyandurg</title>
-  <meta name="description" content="13 peer-reviewed publications in plant pathology, RNA biology, and plant-microbe interactions. First author on breakthrough SIGS research.">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications · Dr. Pruthvi Kalyandurg, PhD</title>
+<meta name="description" content="Peer-reviewed publications and book chapters across plant pathology, RNA interference, virology, and plant–microbe interactions.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf8f4;--bg2:#f0ebe2;--bg3:#e8e1d6;
+  --line:rgba(28,26,23,0.12);--text:#1c1a17;--muted:rgba(28,26,23,0.56);--faint:rgba(28,26,23,0.32);
+  --accent:#8a6120;--accent-soft:rgba(138,97,32,0.12);--pair:#4e8c60;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--maxw:1180px;
+}
+[data-theme="dark"]{
+  --bg:#0c0b0f;--bg2:#131217;--bg3:#17161c;
+  --line:rgba(240,236,227,0.14);--text:#f0ece3;--muted:rgba(240,236,227,0.60);--faint:rgba(240,236,227,0.30);
+  --accent:#d4aa60;--accent-soft:rgba(212,170,96,0.14);--pair:#6faa86;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background .5s,color .5s}
+a{color:inherit}
+::selection{background:var(--accent-soft)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem clamp(1.5rem,4vw,3rem);display:flex;justify-content:space-between;align-items:center}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 30%,transparent);opacity:.92;pointer-events:none;transition:background .5s}
+.nav-logo{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--text);position:relative;z-index:1}
+.nav-right{display:flex;align-items:center;gap:clamp(1.2rem,3vw,2.4rem);position:relative;z-index:1}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.theme-toggle{background:none;border:1px solid var(--line);color:var(--muted);width:34px;height:34px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:.2s;font-size:.9rem;line-height:1}
+.theme-toggle:hover{color:var(--text);border-color:var(--accent)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.nav-burger span{width:22px;height:1.5px;background:var(--text)}
+
+.page-hero{max-width:var(--maxw);margin:0 auto;padding:11rem clamp(1.5rem,4vw,3rem) 4rem;border-bottom:1px solid var(--line)}
+.tag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.9rem;margin-bottom:2rem}
+.tag::before{content:'';width:1.4rem;height:1px;background:var(--accent)}
+.page-title{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:1.6rem}
+.page-title em{font-style:italic;color:var(--accent)}
+.page-sub{font-size:1.05rem;color:var(--muted);line-height:1.8;max-width:60ch;margin-bottom:3rem}
+.hstats{display:flex;flex-wrap:wrap;gap:clamp(2rem,5vw,4rem);padding-top:2.4rem;border-top:1px solid var(--line)}
+.hstat-num{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);line-height:1}
+.hstat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(4rem,8vh,6rem) clamp(1.5rem,4vw,3rem)}
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.theme-card{background:var(--bg);padding:2.4rem}
+.theme-card .k{font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+.theme-card h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;line-height:1.3;margin-bottom:.8rem}
+.theme-card p{font-size:.88rem;color:var(--muted);line-height:1.75}
+
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:3rem}
+.fbtn{background:none;border:1px solid var(--line);color:var(--muted);font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.1rem;cursor:pointer;transition:.2s}
+.fbtn:hover{color:var(--text);border-color:var(--accent)}
+.fbtn.active{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+
+.pub{display:grid;grid-template-columns:5rem 1fr;gap:clamp(1rem,3vw,2.5rem);padding:2.4rem 0;border-top:1px solid var(--line)}
+.pub:last-of-type{border-bottom:1px solid var(--line)}
+.pub.hidden{display:none}
+.pub.first{background:var(--accent-soft);margin:0 -1.4rem;padding:2.4rem 1.4rem}
+.pub-year{font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--accent);padding-top:.2rem}
+.pub-title{font-family:var(--serif);font-weight:400;font-size:1.08rem;line-height:1.4;margin-bottom:.55rem}
+.pub-title em{font-style:italic}
+.pub-journal{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.pub-authors{font-size:.84rem;color:var(--muted);margin-bottom:.8rem;line-height:1.55}
+.pub-authors strong{color:var(--text);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.85rem}
+.t{font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:.2rem .6rem}
+.doi{font-size:.76rem;color:var(--accent);text-decoration:none;transition:opacity .2s}
+.doi:hover{opacity:.7}
+.badge{display:inline-block;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-soft);padding:.18rem .55rem;margin-left:.6rem;vertical-align:middle}
+.chapter{font-size:.7rem;color:var(--muted);font-style:normal}
+.note{font-size:.82rem;font-style:italic;color:var(--muted);line-height:1.6;margin:.4rem 0 .85rem}
+.scholar{margin-top:3rem;padding:1.5rem 1.8rem;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--accent);font-size:.85rem;color:var(--muted);line-height:1.7}
+.scholar a{color:var(--accent);text-decoration:none}
+.scholar a:hover{text-decoration:underline}
+
+footer{border-top:1px solid var(--line);padding:2.4rem clamp(1.5rem,4vw,3rem);display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.footer-name{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.8rem}
+.footer-links a{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:.7rem;color:var(--faint)}
+
+.reveal{opacity:0;transform:translateY(1.4rem);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:880px){
+  .nav-links{position:fixed;inset:0 0 auto;top:0;flex-direction:column;gap:1.8rem;background:var(--bg);padding:6rem 2rem 2.5rem;transform:translateY(-100%);transition:transform .4s;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+  .nav-links.open{transform:none}
+  .nav-burger{display:flex}
+  .themes{grid-template-columns:1fr}
+  .pub{grid-template-columns:1fr;gap:.5rem}
+  .pub.first{margin:0;padding:2.4rem 0}
+  footer{flex-direction:column;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.001ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Pruthvi Kalyandurg, PhD<sub>Plant Scientist &amp; Entrepreneur</sub></a>
-    <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
+<nav>
+  <a href="index.html" class="nav-logo">Pruthvi Kalyandurg</a>
+  <div class="nav-right">
+    <ul class="nav-links" id="navlinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#education">Education</a></li>
       <li><a href="publications.html" class="active">Publications</a></li>
-      <li><a href="microscopy.html">Microscopy</a></li>
-      <li><a href="photography.html">Photography</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="startup.html">Startup</a></li>
+      <li><a href="startup-news.html">Venture</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
-    <div class="nav-right">
-      
-      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
-    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☾</button>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="nav-mobile">
-  <a href="about.html">About</a>
-  <a href="publications.html" class="active">Publications</a>
-  <a href="microscopy.html">Microscopy</a>
-  <a href="photography.html">Photography</a>
-  <a href="learn.html">Learn</a>
-  <a href="startup.html">Startup</a>
-
-</div>
 
 <div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="page-hero-label">Scientific Portfolio</div>
-    <h1 class="page-hero-title">Publications &amp; Research</h1>
-    <p class="page-hero-sub">13 peer-reviewed publications · 2 book chapters · 1 review article across plant pathology, RNA interference, and plant-microbe interactions.</p>
+  <div class="tag">Scientific Record</div>
+  <h1 class="page-title">Publications<br><em>&amp; research output.</em></h1>
+  <p class="page-sub">Thirteen peer-reviewed papers and two book chapters across plant pathology, RNA interference, virology, and plant-microbe interactions, including first-author work on the molecular biology of plant viruses and RNA-based crop protection.</p>
+  <div class="hstats">
+    <div><div class="hstat-num">13</div><div class="hstat-label">Peer-reviewed papers</div></div>
+    <div><div class="hstat-num">4</div><div class="hstat-label">First-author papers</div></div>
+    <div><div class="hstat-num">2</div><div class="hstat-label">Book chapters</div></div>
+    <div><div class="hstat-num">16+</div><div class="hstat-label">Years of research</div></div>
   </div>
 </div>
 
-
-<!-- Research themes -->
-<section class="section">
-  <div class="section-inner">
-    <div class="section-label">Research Themes</div>
-    <h2 class="section-title">Areas of Investigation</h2>
-
-    <div class="grid-3 fade-in" style="margin-bottom:3rem">
-      <div class="card">
-        <div class="card-tag">Plant Pathology</div>
-        <div class="card-title">Plant Disease &amp; Protection</div>
-        <p class="card-text">From characterising PMTV diversity in Peru to pioneering spray-induced gene silencing against potato late blight — targeting plant diseases at their molecular root.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag">RNA Biology</div>
-        <div class="card-title">RNA Interference &amp; Gene Silencing</div>
-        <p class="card-text">Investigating viral suppressors of RNA silencing, dsRNA delivery mechanisms, cross-kingdom sRNA signalling, and Dicer-dependent RNAi in fungal interactions.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag">Sustainable Agriculture</div>
-        <div class="card-title">Biocontrol &amp; Plant Growth</div>
-        <p class="card-text">Characterising beneficial microbes — from biocontrol bacteria to mycoparasitic fungi — as alternatives to chemical pesticides and synthetic fertilisers.</p>
-      </div>
+<section class="wrap" style="padding-bottom:0">
+  <div class="tag">Research themes</div>
+  <div class="themes">
+    <div class="theme-card reveal">
+      <div class="k">Plant pathology</div>
+      <h3>Disease &amp; protection</h3>
+      <p>From characterising virus diversity across continents to demonstrating RNA-based protection against potato late blight, targeting disease at its molecular root.</p>
     </div>
-
-    <!-- Filter -->
-    <div class="section-label">All Publications</div>
-    <div class="pub-filters">
-      <button class="pub-filter-btn active" data-filter="all">All</button>
-      <button class="pub-filter-btn" data-filter="plant-pathology">Plant Pathology</button>
-      <button class="pub-filter-btn" data-filter="rna">RNA Biology</button>
-      <button class="pub-filter-btn" data-filter="biocontrol">Biocontrol</button>
-      <button class="pub-filter-btn" data-filter="virology">Virology</button>
+    <div class="theme-card reveal">
+      <div class="k">RNA biology</div>
+      <h3>Interference &amp; silencing</h3>
+      <p>Viral suppressors of RNA silencing, small-RNA delivery, cross-kingdom signalling, and Dicer-dependent RNAi in fungal interactions.</p>
     </div>
-
-    <!-- PUBLICATIONS LIST — based on PubMed data -->
-    <div class="fade-in">
-
-      <div class="pub-item" data-theme="plant-pathology rna">
-        <div class="pub-year">2025</div>
-        <div class="pub-body">
-          <div class="pub-title">Heterologous Production of Cyprosin B in <em>Nicotiana benthamiana</em>: Unveiling the Role of the Plant-Specific Insert Domain in Protein Function and Subcellular Localisation</div>
-          <div class="pub-journal">Plant Biotechnology Journal</div>
-          <div class="pub-authors">Muthusamy S, Vetukuri RR, Lundgren A, Kim S, <strong>Kalyandurg PB</strong>, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">N. benthamiana</span><span class="pub-tag">Protein Production</span><span class="pub-tag">Subcellular Localisation</span><span class="pub-tag">Confocal</span></div>
-          <a href="https://doi.org/10.1111/pbi.70339" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1111/pbi.70339 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="rna biocontrol">
-        <div class="pub-year">2024</div>
-        <div class="pub-body">
-          <div class="pub-title">RNA silencing is a key regulatory mechanism in the biocontrol fungus <em>Clonostachys rosea</em>–wheat interactions</div>
-          <div class="pub-journal">BMC Biology</div>
-          <div class="pub-authors">Piombo E, Vetukuri RR, Konakalla NC, <strong>Kalyandurg PB</strong>, Sundararajan P, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">RNA Silencing</span><span class="pub-tag">Biocontrol</span><span class="pub-tag">Cross-kingdom RNAi</span><span class="pub-tag">miRNA</span></div>
-          <a href="https://doi.org/10.1186/s12915-024-02014-9" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1186/s12915-024-02014-9 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="biocontrol plant-pathology">
-        <div class="pub-year">2023</div>
-        <div class="pub-body">
-          <div class="pub-title">Comparative transcriptome profiling provides insights into the growth promotion activity of strain SLU99 in tomato and potato plants</div>
-          <div class="pub-journal">Frontiers in Plant Science</div>
-          <div class="pub-authors">Hanifah NASB, Ghadamgahi F, Ghosh S, Ortiz R, Whisson SC, Vetukuri RR, <strong>Kalyandurg PB</strong></div>
-          <div class="pub-tags"><span class="pub-tag">PGPR</span><span class="pub-tag">Transcriptome</span><span class="pub-tag">Growth Promotion</span><span class="pub-tag">Potato</span></div>
-          <a href="https://doi.org/10.3389/fpls.2023.1141692" class="pub-doi" target="_blank" rel="noopener">DOI: 10.3389/fpls.2023.1141692 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="plant-pathology biocontrol">
-        <div class="pub-year">2023</div>
-        <div class="pub-body">
-          <div class="pub-title">Metabolic Processes and Biological Macromolecules Defined the Positive Effects of Protein-Rich Biostimulants on Sugar Beet Plant Development</div>
-          <div class="pub-journal">International Journal of Molecular Sciences</div>
-          <div class="pub-authors">Jolayemi OL, Malik AH, Vetukuri RR, Saripella GV, <strong>Kalyandurg PB</strong>, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">Biostimulants</span><span class="pub-tag">Sugar Beet</span><span class="pub-tag">Transcriptomics</span></div>
-          <a href="https://doi.org/10.3390/ijms24119720" class="pub-doi" target="_blank" rel="noopener">DOI: 10.3390/ijms24119720 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="biocontrol plant-pathology">
-        <div class="pub-year">2022</div>
-        <div class="pub-body">
-          <div class="pub-title">Plant Growth-Promoting Activity of FG106 and Its Ability to Act as a Biocontrol Agent against Potato, Tomato and Taro Pathogens</div>
-          <div class="pub-journal">Biology</div>
-          <div class="pub-authors">Ghadamgahi F, Tarighi S, Taheri P, Saripella GV, Anzalone A, <strong>Kalyandurg PB</strong>, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">Biocontrol</span><span class="pub-tag">PGPR</span><span class="pub-tag">Potato</span><span class="pub-tag">Tomato</span></div>
-          <a href="https://doi.org/10.3390/biology11010140" class="pub-doi" target="_blank" rel="noopener">DOI: 10.3390/biology11010140 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="rna plant-pathology">
-        <div class="pub-year">2022</div>
-        <div class="pub-body">
-          <div class="pub-title">Spray-Induced Gene Silencing to Study Gene Function in <em>Phytophthora</em> <span style="font-size:.78rem;color:var(--muted);font-style:normal">[Book Chapter]</span></div>
-          <div class="pub-journal">Methods in Molecular Biology, Vol. 2536</div>
-          <div class="pub-authors">Sundararajan P, <strong>Kalyandurg PB</strong>, Liu Q, Chawade A, Whisson SC, Vetukuri RR</div>
-          <div class="pub-tags"><span class="pub-tag">SIGS</span><span class="pub-tag">RNAi</span><span class="pub-tag">Phytophthora</span><span class="pub-tag">Book Chapter</span></div>
-          <a href="https://doi.org/10.1007/978-1-0716-2517-0_27" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1007/978-1-0716-2517-0_27 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="plant-pathology biocontrol">
-        <div class="pub-year">2022</div>
-        <div class="pub-body">
-          <div class="pub-title">A Detached Leaf Assay for Rapidly Screening Plant Pathogen–Biological Control Agents <span style="font-size:.78rem;color:var(--muted);font-style:normal">[Book Chapter]</span></div>
-          <div class="pub-journal">Methods in Molecular Biology, Vol. 2536</div>
-          <div class="pub-authors">Macan GPF, Khalil S, <strong>Kalyandurg PB</strong>, Pareek N, Vetukuri RR</div>
-          <div class="pub-tags"><span class="pub-tag">Biocontrol Screening</span><span class="pub-tag">Phytophthora</span><span class="pub-tag">Strawberry</span><span class="pub-tag">Book Chapter</span></div>
-          <a href="https://doi.org/10.1007/978-1-0716-2517-0_26" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1007/978-1-0716-2517-0_26 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item pub-first" data-theme="rna plant-pathology">
-        <div class="pub-year">2021</div>
-        <div class="pub-body">
-          <div class="pub-title">
-            Spray-Induced Gene Silencing as a Potential Tool to Control Potato Late Blight Disease
-            <span class="first-badge">⭐ First Author · Landmark Study</span>
-          </div>
-          <div class="pub-journal">Phytopathology</div>
-          <div class="pub-authors"><strong>Kalyandurg PB</strong>, Sundararajan P, Dubey M, Ghadamgahi F, Zahid MA, Whisson SC, Vetukuri RR</div>
-          <div class="pub-tags"><span class="pub-tag">dsRNA</span><span class="pub-tag">SIGS</span><span class="pub-tag">Phytophthora infestans</span><span class="pub-tag">Potato Late Blight</span><span class="pub-tag">Disease Control</span></div>
-          <p style="font-size:.82rem;color:var(--muted);margin:.5rem 0;line-height:1.5"><em>First demonstration of SIGS-based biological protection of plants from Phytophthora infestans — a key milestone in sustainable crop protection.</em></p>
-          <a href="https://doi.org/10.1094/PHYTO-02-21-0054-SC" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1094/PHYTO-02-21-0054-SC ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="rna biocontrol">
-        <div class="pub-year">2021</div>
-        <div class="pub-body">
-          <div class="pub-title">Role of Dicer-Dependent RNA Interference in Regulating Mycoparasitic Interactions</div>
-          <div class="pub-journal">Microbiology Spectrum</div>
-          <div class="pub-authors">Piombo E, Vetukuri RR, Broberg A, <strong>Kalyandurg PB</strong>, Kushwaha S, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">RNAi</span><span class="pub-tag">Biocontrol</span><span class="pub-tag">Mycoparasitism</span><span class="pub-tag">sRNA</span></div>
-          <a href="https://doi.org/10.1128/Spectrum.01099-21" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1128/Spectrum.01099-21 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="rna virology">
-        <div class="pub-year">2020</div>
-        <div class="pub-body">
-          <div class="pub-title">Effect of RNA silencing suppression activity of chrysanthemum virus B p12 protein on small RNA species</div>
-          <div class="pub-journal">Archives of Virology</div>
-          <div class="pub-authors">Vetukuri RR, <strong>Kalyandurg PB</strong>, Saripella GV, Sen D, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">RNA Silencing</span><span class="pub-tag">Plant Virus</span><span class="pub-tag">sRNA</span><span class="pub-tag">miRNA</span></div>
-          <a href="https://doi.org/10.1007/s00705-020-04832-y" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1007/s00705-020-04832-y ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item pub-first" data-theme="rna virology">
-        <div class="pub-year">2019</div>
-        <div class="pub-body">
-          <div class="pub-title">
-            Efficient RNA silencing suppression activity of Potato Mop-Top Virus 8K protein is driven by variability and positive selection
-            <span class="first-badge">⭐ First Author</span>
-          </div>
-          <div class="pub-journal">Virology</div>
-          <div class="pub-authors"><strong>Kalyandurg PB</strong>, Tahmasebi A, Vetukuri RR, Kushwaha SK, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">PMTV</span><span class="pub-tag">RNA Silencing</span><span class="pub-tag">Viral Suppressor</span><span class="pub-tag">Positive Selection</span></div>
-          <a href="https://doi.org/10.1016/j.virol.2019.06.018" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1016/j.virol.2019.06.018 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item" data-theme="virology plant-pathology">
-        <div class="pub-year">2018</div>
-        <div class="pub-body">
-          <div class="pub-title">Potato Mop-Top Virus Co-Opts the Stress Sensor HIPP26 for Long-Distance Movement</div>
-          <div class="pub-journal">Plant Physiology</div>
-          <div class="pub-authors">Cowan GH, Roberts AG, Jones S, Kumar P, <strong>Kalyandurg PB</strong>, Gil JF, Savenkov EI, et al.</div>
-          <div class="pub-tags"><span class="pub-tag">PMTV</span><span class="pub-tag">HIPP26</span><span class="pub-tag">Virus Movement</span><span class="pub-tag">Drought Stress</span></div>
-          <a href="https://doi.org/10.1104/pp.17.01698" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1104/pp.17.01698 ↗</a>
-        </div>
-      </div>
-
-      <div class="pub-item pub-first" data-theme="virology plant-pathology">
-        <div class="pub-year">2017</div>
-        <div class="pub-body">
-          <div class="pub-title">
-            Molecular and pathobiological characterization of 61 Potato mop-top virus full-length cDNAs reveals great variability, novel genotypes and evidence for recombination
-            <span class="first-badge">⭐ First Author</span>
-          </div>
-          <div class="pub-journal">Molecular Plant Pathology</div>
-          <div class="pub-authors"><strong>Kalyandurg P</strong>, Gil JF, Lukhovitskaya NI, Flores B, Müller G, et al. (CIP Peru, SLU)</div>
-          <div class="pub-tags"><span class="pub-tag">PMTV</span><span class="pub-tag">Genetic Diversity</span><span class="pub-tag">Peru</span><span class="pub-tag">Recombination</span><span class="pub-tag">Phylogenetics</span></div>
-          <a href="https://doi.org/10.1111/mpp.12552" class="pub-doi" target="_blank" rel="noopener">DOI: 10.1111/mpp.12552 ↗</a>
-        </div>
-      </div>
-
-    </div><!-- /.fade-in -->
-
-    <div style="background:var(--primary-light);border:1px solid rgba(45,122,79,.2);border-radius:var(--r-md);padding:1.25rem 1.5rem;margin-top:2rem;font-size:.875rem;color:var(--muted)">
-      📌 Publications retrieved from <strong>PubMed</strong> (NIH). For the complete and up-to-date list including book chapters and reviews, visit <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" style="color:var(--primary);font-weight:600" target="_blank" rel="noopener">Google Scholar ↗</a>
+    <div class="theme-card reveal">
+      <div class="k">Sustainable agriculture</div>
+      <h3>Biocontrol &amp; growth</h3>
+      <p>Beneficial microbes, from biocontrol bacteria to mycoparasitic fungi, characterised as alternatives to chemical inputs.</p>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-name">Pruthvi Kalyandurg</div>
-        <p class="footer-brand-tagline">Plant scientist, entrepreneur, and photographer based in Uppsala, Sweden.</p>
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">in</a>
-          <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">GS</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Navigate</div>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="microscopy.html">Microscopy</a></li>
-          <li><a href="learn.html">Learn</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">More</div>
-        <ul class="footer-links">
-          <li><a href="startup.html">Startup</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">External</div>
-        <ul class="footer-links">
-          <li><a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a></li>
-          <li><a href="https://www.researchgate.net/profile/Pruthvi_Kalyandurg" target="_blank" rel="noopener">ResearchGate ↗</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 Pruthvi Kalyandurg</span>
-      <span style="opacity:.4">Science × Nature × Innovation</span>
-    </div>
+<section class="wrap">
+  <div class="tag">All publications</div>
+  <div class="filters" role="group" aria-label="Filter publications">
+    <button class="fbtn active" data-f="all">All</button>
+    <button class="fbtn" data-f="pathology">Plant pathology</button>
+    <button class="fbtn" data-f="rna">RNA biology</button>
+    <button class="fbtn" data-f="biocontrol">Biocontrol</button>
+    <button class="fbtn" data-f="virology">Virology</button>
   </div>
+
+  <div id="list">
+
+    <article class="pub reveal" data-t="pathology rna">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">Heterologous production of cyprosin B in <em>Nicotiana benthamiana</em>: unveiling the role of the plant-specific insert domain in protein function and subcellular localisation</div>
+        <div class="pub-journal">Plant Biotechnology Journal</div>
+        <div class="pub-authors">Muthusamy S, Vetukuri RR, Lundgren A, Kim S, <strong>Kalyandurg PB</strong>, et al.</div>
+        <div class="tags"><span class="t">N. benthamiana</span><span class="t">Protein production</span><span class="t">Confocal</span></div>
+        <a class="doi" href="https://doi.org/10.1111/pbi.70339" target="_blank" rel="noopener">DOI: 10.1111/pbi.70339 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="rna biocontrol">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">RNA silencing is a key regulatory mechanism in the biocontrol fungus <em>Clonostachys rosea</em> and wheat interactions</div>
+        <div class="pub-journal">BMC Biology</div>
+        <div class="pub-authors">Piombo E, Vetukuri RR, Konakalla NC, <strong>Kalyandurg PB</strong>, Sundararajan P, et al.</div>
+        <div class="tags"><span class="t">RNA silencing</span><span class="t">Biocontrol</span><span class="t">Cross-kingdom RNAi</span><span class="t">miRNA</span></div>
+        <a class="doi" href="https://doi.org/10.1186/s12915-024-02014-9" target="_blank" rel="noopener">DOI: 10.1186/s12915-024-02014-9 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="biocontrol pathology">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Comparative transcriptome profiling provides insights into the growth-promotion activity of strain SLU99 in tomato and potato plants</div>
+        <div class="pub-journal">Frontiers in Plant Science</div>
+        <div class="pub-authors">Hanifah NASB, Ghadamgahi F, Ghosh S, Ortiz R, Whisson SC, Vetukuri RR, <strong>Kalyandurg PB</strong></div>
+        <div class="tags"><span class="t">PGPR</span><span class="t">Transcriptome</span><span class="t">Growth promotion</span></div>
+        <a class="doi" href="https://doi.org/10.3389/fpls.2023.1141692" target="_blank" rel="noopener">DOI: 10.3389/fpls.2023.1141692 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="pathology biocontrol">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Metabolic processes and biological macromolecules defined the positive effects of protein-rich biostimulants on sugar beet plant development</div>
+        <div class="pub-journal">International Journal of Molecular Sciences</div>
+        <div class="pub-authors">Jolayemi OL, Malik AH, Vetukuri RR, Saripella GV, <strong>Kalyandurg PB</strong>, et al.</div>
+        <div class="tags"><span class="t">Biostimulants</span><span class="t">Sugar beet</span><span class="t">Transcriptomics</span></div>
+        <a class="doi" href="https://doi.org/10.3390/ijms24119720" target="_blank" rel="noopener">DOI: 10.3390/ijms24119720 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="biocontrol pathology">
+      <div class="pub-year">2022</div>
+      <div>
+        <div class="pub-title">Plant growth-promoting activity of FG106 and its ability to act as a biocontrol agent against potato, tomato and taro pathogens</div>
+        <div class="pub-journal">Biology</div>
+        <div class="pub-authors">Ghadamgahi F, Tarighi S, Taheri P, Saripella GV, Anzalone A, <strong>Kalyandurg PB</strong>, et al.</div>
+        <div class="tags"><span class="t">Biocontrol</span><span class="t">PGPR</span><span class="t">Potato</span><span class="t">Tomato</span></div>
+        <a class="doi" href="https://doi.org/10.3390/biology11010140" target="_blank" rel="noopener">DOI: 10.3390/biology11010140 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="rna pathology">
+      <div class="pub-year">2022</div>
+      <div>
+        <div class="pub-title">Spray-induced gene silencing to study gene function in <em>Phytophthora</em> <span class="chapter">[Book chapter]</span></div>
+        <div class="pub-journal">Methods in Molecular Biology, Vol. 2536</div>
+        <div class="pub-authors">Sundararajan P, <strong>Kalyandurg PB</strong>, Liu Q, Chawade A, Whisson SC, Vetukuri RR</div>
+        <div class="tags"><span class="t">RNAi</span><span class="t">Phytophthora</span><span class="t">Book chapter</span></div>
+        <a class="doi" href="https://doi.org/10.1007/978-1-0716-2517-0_27" target="_blank" rel="noopener">DOI: 10.1007/978-1-0716-2517-0_27 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="pathology biocontrol">
+      <div class="pub-year">2022</div>
+      <div>
+        <div class="pub-title">A detached-leaf assay for rapidly screening plant pathogen and biological control agents <span class="chapter">[Book chapter]</span></div>
+        <div class="pub-journal">Methods in Molecular Biology, Vol. 2536</div>
+        <div class="pub-authors">Macan GPF, Khalil S, <strong>Kalyandurg PB</strong>, Pareek N, Vetukuri RR</div>
+        <div class="tags"><span class="t">Biocontrol screening</span><span class="t">Strawberry</span><span class="t">Book chapter</span></div>
+        <a class="doi" href="https://doi.org/10.1007/978-1-0716-2517-0_26" target="_blank" rel="noopener">DOI: 10.1007/978-1-0716-2517-0_26 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub first reveal" data-t="rna pathology">
+      <div class="pub-year">2021</div>
+      <div>
+        <div class="pub-title">Spray-induced gene silencing as a potential tool to control potato late blight disease <span class="badge">First author · Landmark</span></div>
+        <div class="pub-journal">Phytopathology</div>
+        <div class="pub-authors"><strong>Kalyandurg PB</strong>, Sundararajan P, Dubey M, Ghadamgahi F, Zahid MA, Whisson SC, Vetukuri RR</div>
+        <div class="tags"><span class="t">SIGS</span><span class="t">Phytophthora infestans</span><span class="t">Potato late blight</span><span class="t">Disease control</span></div>
+        <p class="note">First demonstration of RNA-based biological protection of plants against <em>Phytophthora infestans</em>, a milestone for sustainable crop protection.</p>
+        <a class="doi" href="https://doi.org/10.1094/PHYTO-02-21-0054-SC" target="_blank" rel="noopener">DOI: 10.1094/PHYTO-02-21-0054-SC ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="rna biocontrol">
+      <div class="pub-year">2021</div>
+      <div>
+        <div class="pub-title">Role of Dicer-dependent RNA interference in regulating mycoparasitic interactions</div>
+        <div class="pub-journal">Microbiology Spectrum</div>
+        <div class="pub-authors">Piombo E, Vetukuri RR, Broberg A, <strong>Kalyandurg PB</strong>, Kushwaha S, et al.</div>
+        <div class="tags"><span class="t">RNAi</span><span class="t">Mycoparasitism</span><span class="t">sRNA</span></div>
+        <a class="doi" href="https://doi.org/10.1128/Spectrum.01099-21" target="_blank" rel="noopener">DOI: 10.1128/Spectrum.01099-21 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="rna virology">
+      <div class="pub-year">2020</div>
+      <div>
+        <div class="pub-title">Effect of RNA silencing suppression activity of chrysanthemum virus B p12 protein on small RNA species</div>
+        <div class="pub-journal">Archives of Virology</div>
+        <div class="pub-authors">Vetukuri RR, <strong>Kalyandurg PB</strong>, Saripella GV, Sen D, et al.</div>
+        <div class="tags"><span class="t">RNA silencing</span><span class="t">Plant virus</span><span class="t">sRNA</span></div>
+        <a class="doi" href="https://doi.org/10.1007/s00705-020-04832-y" target="_blank" rel="noopener">DOI: 10.1007/s00705-020-04832-y ↗</a>
+      </div>
+    </article>
+
+    <article class="pub first reveal" data-t="rna virology">
+      <div class="pub-year">2019</div>
+      <div>
+        <div class="pub-title">Efficient RNA silencing suppression activity of Potato mop-top virus 8K protein is driven by variability and positive selection <span class="badge">First author</span></div>
+        <div class="pub-journal">Virology</div>
+        <div class="pub-authors"><strong>Kalyandurg PB</strong>, Tahmasebi A, Vetukuri RR, Kushwaha SK, et al.</div>
+        <div class="tags"><span class="t">PMTV</span><span class="t">RNA silencing</span><span class="t">Viral suppressor</span><span class="t">Positive selection</span></div>
+        <a class="doi" href="https://doi.org/10.1016/j.virol.2019.06.018" target="_blank" rel="noopener">DOI: 10.1016/j.virol.2019.06.018 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub reveal" data-t="virology pathology">
+      <div class="pub-year">2018</div>
+      <div>
+        <div class="pub-title">Potato mop-top virus co-opts the stress sensor HIPP26 for long-distance movement</div>
+        <div class="pub-journal">Plant Physiology</div>
+        <div class="pub-authors">Cowan GH, Roberts AG, Jones S, Kumar P, <strong>Kalyandurg PB</strong>, Gil JF, Savenkov EI, et al.</div>
+        <div class="tags"><span class="t">PMTV</span><span class="t">HIPP26</span><span class="t">Virus movement</span></div>
+        <a class="doi" href="https://doi.org/10.1104/pp.17.01698" target="_blank" rel="noopener">DOI: 10.1104/pp.17.01698 ↗</a>
+      </div>
+    </article>
+
+    <article class="pub first reveal" data-t="virology pathology">
+      <div class="pub-year">2017</div>
+      <div>
+        <div class="pub-title">Molecular and pathobiological characterisation of 61 Potato mop-top virus full-length cDNAs reveals great variability, novel genotypes and evidence for recombination <span class="badge">First author</span></div>
+        <div class="pub-journal">Molecular Plant Pathology</div>
+        <div class="pub-authors"><strong>Kalyandurg P</strong>, Gil JF, Lukhovitskaya NI, Flores B, Müller G, et al.</div>
+        <div class="tags"><span class="t">PMTV</span><span class="t">Genetic diversity</span><span class="t">Recombination</span><span class="t">Phylogenetics</span></div>
+        <a class="doi" href="https://doi.org/10.1111/mpp.12552" target="_blank" rel="noopener">DOI: 10.1111/mpp.12552 ↗</a>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="scholar">
+    This list reflects peer-reviewed work indexed in public databases. For the complete, up-to-date record including reviews and citation metrics, see
+    <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a>.
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Dr. Pruthvi Kalyandurg, PhD</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="startup-news.html">Venture</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© <span id="year"></span> Pruthvi Kalyandurg · Uppsala, Sweden</div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+(function(){
+  const root=document.documentElement,btn=document.getElementById('theme-toggle');
+  const init=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',init);btn.textContent=init==='dark'?'☀':'☾';
+  btn.onclick=()=>{const n=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',n);btn.textContent=n==='dark'?'☀':'☾';localStorage.setItem('theme',n)};
+})();
+(function(){
+  const b=document.getElementById('burger'),l=document.getElementById('navlinks');
+  b.onclick=()=>{const o=l.classList.toggle('open');b.setAttribute('aria-expanded',o)};
+  l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>l.classList.remove('open')));
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+document.querySelectorAll('.fbtn').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const f=btn.dataset.f;
+  document.querySelectorAll('.pub').forEach(p=>p.classList.toggle('hidden',!(f==='all'||p.dataset.t.includes(f))));
+}));
+</script>
 </body>
 </html>
