@@ -207,7 +207,7 @@ nav::before{
 }
 .edu-arrow:hover{color:var(--text); border-color:var(--accent)}
 .edu .wrap,.edu .edu-scroll{position:relative; z-index:2}
-.edu .venture-bg{opacity:.38}
+.edu .venture-bg{opacity:.38; filter:url(#sharpen)}
 [data-theme="dark"] .edu .venture-bg{opacity:.22}
 
 /* ── PREVIEW (pubs / venture) ──────────────────────── */
@@ -297,6 +297,14 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
 </head>
 <body>
 
+<!-- SVG sharpen filter (used by the Education background image) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="sharpen">
+    <feConvolveMatrix order="3" preserveAlpha="true" edgeMode="duplicate"
+      kernelMatrix="-1 -1 -1  -1 9 -1  -1 -1 -1"/>
+  </filter>
+</svg>
+
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Pruthvi Kalyandurg</a>
@@ -305,7 +313,6 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="publications.html">Publications</a></li>
-      <li><a href="startup-news.html">Venture</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">☾</button>
@@ -487,23 +494,6 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
   </div>
 </section>
 
-<!-- 06 · VENTURE PREVIEW -->
-<section id="venture" class="venture">
-  <div class="venture-bg" style="background-image:url('images/Confocal.jpg')"></div>
-  <div class="venture-veil"></div>
-  <div class="wrap wrap-narrow">
-    <div class="venture-stealth">Current focus · Stealth biotech venture</div>
-    <h2 class="preview-head reveal">From the greenhouse to <em>the supply chain</em>.</h2>
-    <p class="preview-sub reveal d1">
-      I co-founded an early-stage venture to take a decade of research out of the lab: a confidential translational program addressing the loss of crops between harvest and use, a problem that costs the global supply chain billions each year. The approach is biology-based, precise, and leaves no chemical residue.
-    </p>
-    <p class="preview-sub reveal d2" style="margin-bottom:2.4rem">
-      What began as applied research is now a venture with a team and real-world validation behind it. I keep an open field-notes log of the parts I can share: the science, the decisions, and the conviction.
-    </p>
-    <a href="startup-news.html" class="more-link reveal">Read the field notes →</a>
-  </div>
-</section>
-
 <hr class="divider">
 
 <!-- CONTACT -->
@@ -524,7 +514,6 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
   <div class="footer-name">Dr. Pruthvi Kalyandurg, PhD</div>
   <div class="footer-links">
     <a href="publications.html">Publications</a>
-    <a href="startup-news.html">Venture</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="footer-copy">© <span id="year"></span> Pruthvi Kalyandurg · Uppsala, Sweden</div>
