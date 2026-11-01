@@ -233,6 +233,12 @@ nav::before{
 .venture-stealth{font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.6rem}
 
 /* ── MICROSCOPY BAND ───────────────────────────────── */
+#photos .preview-sub{margin-bottom:0}
+#photos .wrap{padding-bottom:0}
+.photo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; padding:0 clamp(16px,4vw,48px); max-width:1280px; margin:2.4rem auto 0}
+.photo-grid figure{margin:0; overflow:hidden; aspect-ratio:3/2; border-radius:4px}
+.photo-grid img{width:100%; height:100%; object-fit:cover; display:block}
+@media (max-width:640px){.photo-grid{grid-template-columns:repeat(2,1fr)}}
 .scope-band{display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line); width:100%; overflow:hidden}
 .scope-band figure{margin:0; overflow:hidden; height:clamp(170px,30vh,330px)}
 .scope-band img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.88) brightness(.96); transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter 1.1s ease; will-change:transform}
@@ -313,6 +319,7 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="publications.html">Publications</a></li>
+      <li><a href="#photos">Photos</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">☾</button>
@@ -329,41 +336,27 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
     <div class="hero-label">Scientist · Entrepreneur · Photographer</div>
     <h1 class="hero-title">Nature already holds the answers. The work is to <em>decode them</em>, and build.</h1>
     <p class="hero-sub">
-      A decade spent at the genetic level of plant health: how disease takes hold, and how a plant's own biology becomes its protection. Now I translate that science out of the journal and into the field.
+      I'm a molecular biologist. I spent years studying how plants get sick and how they fight back. Now I'm co-founding a company in Uppsala that builds with biology instead of toxic chemicals.
     </p>
     <div class="cta-row">
       <a href="#education" class="btn btn-primary">Explore the work</a>
       <a href="#contact" class="btn btn-ghost">Let's talk</a>
     </div>
   </div>
-  <div class="hero-meta">Scroll to read</div>
-</header>
+  </header>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Molecular biology<b>·</b>Agricultural biotechnology<b>·</b>Pathogen &amp; fungal biology<b>·</b>Plant health<b>·</b>Translational science<b>·</b></span>
-    <span class="marquee-item">Molecular biology<b>·</b>Agricultural biotechnology<b>·</b>Pathogen &amp; fungal biology<b>·</b>Plant health<b>·</b>Translational science<b>·</b></span>
-  </div>
-</div>
 
 <!-- 02 · ABOUT -->
 <section id="about" class="about">
   <div class="wrap wrap-narrow">
     <div class="tag">About</div>
-    <h2 class="reveal">I work in the space between <em>fundamental biology</em> and the problems it can actually solve.</h2>
+    <h2 class="reveal">I study how plants defend themselves, and I build with what I find.</h2>
     <p class="reveal d1">
-      My training is in the molecular machinery of plant health: how viruses move, how pathogens take hold, and how a plant's own defences become precise, residue-free protection. The thread running through it is a refusal to let good science sit on a shelf.
+      I started out in India, studying biotechnology in Tamil Nadu. Then I took a detour: two years running training programmes at Landmark Worldwide, learning how to work with people. Science pulled me back, and Uppsala is where I found plants and their viruses. I have been watching them under a microscope ever since.
     </p>
     <p class="reveal d2">
-      Today I spend my time turning that decade of research into something that ships: building, testing, and reasoning about biology as a system rather than a set of isolated results. I move comfortably between the bench, the data, and the decisions a company has to make.
+      What keeps me hooked is how precise living things already are. A plant can recognise a threat and switch off exactly the genes it needs to. I think we should be using that kind of precision instead of toxic chemicals, and that is what I am working on now with my startup.
     </p>
-    <div class="stats reveal d3">
-      <div><div class="stat-num">16+</div><div class="stat-label">Years in the lab</div></div>
-      <div><div class="stat-num">13</div><div class="stat-label">Peer-reviewed papers</div></div>
-      <div><div class="stat-num">9</div><div class="stat-label">Researchers mentored</div></div>
-      <div><div class="stat-num">12</div><div class="stat-label">Courses taught</div></div>
-    </div>
   </div>
 </section>
 
@@ -375,13 +368,13 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
   <div class="venture-veil"></div>
   <div class="wrap">
     <div class="tag">Research Themes</div>
-    <h2 class="theme-head reveal">Five threads, one <em>question</em>: how a plant defends itself, and how we help.</h2>
+    <h2 class="theme-head reveal">What I have worked on</h2>
 
     <div class="theme-row reveal">
       <div class="theme-num">01</div>
       <div>
         <div class="theme-kicker">RNA Biology</div>
-        <div class="theme-title">RNA silencing as a <em>defence system</em></div>
+        <div class="theme-title">RNA silencing as a defence system</div>
         <p class="theme-desc">Plants and fungi can spot a threat and switch off the genes it needs to survive. I study how that built-in defence works, and how to aim it at one disease without leaving any chemical behind.</p>
       </div>
     </div>
@@ -390,7 +383,7 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
       <div class="theme-num">02</div>
       <div>
         <div class="theme-kicker">Virology</div>
-        <div class="theme-title">How viruses <em>move and hide</em></div>
+        <div class="theme-title">How viruses move and hide</div>
         <p class="theme-desc">I spent years working out how plant viruses spread from cell to cell, why they change so quickly, and the tricks they use to switch off a plant's immune response.</p>
       </div>
     </div>
@@ -399,7 +392,7 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
       <div class="theme-num">03</div>
       <div>
         <div class="theme-kicker">Plant–Microbe Interactions</div>
-        <div class="theme-title">The <em>conversation</em> at the interface</div>
+        <div class="theme-title">The conversation at the interface</div>
         <p class="theme-desc">A plant is always trading signals with the microbes around it, some harmful and some helpful. I read that exchange to see what keeps a plant healthy and what makes it sick.</p>
       </div>
     </div>
@@ -408,7 +401,7 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
       <div class="theme-num">04</div>
       <div>
         <div class="theme-kicker">Fungal Biology &amp; Biocontrol</div>
-        <div class="theme-title">Turning biology into <em>protection</em></div>
+        <div class="theme-title">Turning biology into protection</div>
         <p class="theme-desc">Some fungi protect plants by keeping disease in check. I study how they do it, and how to make that protection dependable enough to use on a real farm.</p>
       </div>
     </div>
@@ -417,7 +410,7 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
       <div class="theme-num">05</div>
       <div>
         <div class="theme-kicker">Translational Science</div>
-        <div class="theme-title">From the journal <em>to the field</em></div>
+        <div class="theme-title">From the journal to the field</div>
         <p class="theme-desc">Good lab results rarely reach a farmer on their own. My work closes that gap, taking a proven idea and turning it into something that works at scale.</p>
       </div>
     </div>
@@ -447,8 +440,7 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
             <button class="edu-arrow" id="edu-next" aria-label="Next milestone">↓</button>
           </div>
         </div>
-        <div class="edu-hint" aria-hidden="true">Scroll to advance ↓</div>
-      </div>
+              </div>
     </div>
   </div>
 </section>
@@ -461,17 +453,36 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
   <figure><img src="images/Confocal%20-2.avif" alt="" loading="lazy"></figure>
 </div>
 
+<!-- PHOTOGRAPHY -->
+<section id="photos">
+  <div class="wrap">
+    <div class="tag">Outside the lab</div>
+    <h2 class="preview-head reveal">I collect cameras, vintage and new, and take them everywhere.</h2>
+    <p class="preview-sub reveal d1">Microscopy taught me to look closely. Photography reminds me to step back.</p>
+  </div>
+  <div class="photo-grid">
+    <figure><img src="images/photography/p1/01.jpg" alt="A waterfall in a green valley" loading="lazy"></figure>
+    <figure><img src="images/photography/p1/02.jpg" alt="Mountain peaks under storm clouds" loading="lazy"></figure>
+    <figure><img src="images/photography/p1/03.jpg" alt="An alpine lake below the mountains" loading="lazy"></figure>
+    <figure><img src="images/photography/p1/05.jpg" alt="An old town street at dusk" loading="lazy"></figure>
+    <figure><img src="images/photography/p1/07.jpg" alt="A rocky hill and palm trees at sunset" loading="lazy"></figure>
+    <figure><img src="images/photography/p1/08.jpg" alt="Forested mountains under a grey sky" loading="lazy"></figure>
+  </div>
+</section>
+
+<hr class="divider">
+
 <!-- 05 · PUBLICATIONS PREVIEW -->
 <section id="publications">
   <div class="wrap">
     <div class="tag">Publications</div>
-    <h2 class="preview-head reveal">A decade of work, <em>in the record</em>.</h2>
-    <p class="preview-sub reveal d1">Thirteen peer-reviewed papers and two book chapters across plant pathology, RNA biology, and plant-microbe interactions, including first-author work that opened new ground in RNA-based crop protection.</p>
+    <h2 class="preview-head reveal">Selected papers</h2>
+    <p class="preview-sub reveal d1">Thirteen peer-reviewed papers and two book chapters on plant viruses, RNA biology and how plants and microbes get along. These three are the ones I would point you to first.</p>
 
     <a class="feat-item reveal" href="publications.html">
       <div class="feat-year">2021</div>
       <div>
-        <div class="feat-title">Spray-Induced Gene Silencing as a Potential Tool to Control Potato Late Blight Disease<span class="feat-badge">First author · Landmark</span></div>
+        <div class="feat-title">Spray-Induced Gene Silencing as a Potential Tool to Control Potato Late Blight Disease<span class="feat-badge">First author</span></div>
         <div class="feat-meta">Phytopathology</div>
       </div>
     </a>
@@ -500,9 +511,10 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
 <section id="contact">
   <div class="wrap contact">
     <div class="tag" style="justify-content:center">Contact</div>
-    <h2 class="reveal">Let's <em>talk.</em></h2>
+    <h2 class="reveal">Say hello.</h2>
+    <p class="reveal d1" style="max-width:34rem;margin:0 auto 1.6rem">Happy to talk about RNA, the future of farming, starting a company, GMOs, cameras or philosophy.</p>
     <div class="contact-links reveal d1">
-      <a href="mailto:pruthvi.balachandra@gmail.com">pruthvi.balachandra@gmail.com</a>
+      <a href="mailto:hello@drpruthvi.com">hello@drpruthvi.com</a>
       <a href="https://www.linkedin.com/in/pruthvikalyandurg/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://scholar.google.com/citations?user=WvfE15YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
     </div>
