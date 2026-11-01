@@ -235,6 +235,10 @@ nav::before{
 /* ── MICROSCOPY BAND ───────────────────────────────── */
 #photos .preview-sub{margin-bottom:0}
 #photos .wrap{padding-bottom:0}
+.about-grid{display:grid; grid-template-columns:minmax(220px,340px) 1fr; gap:clamp(2rem,5vw,4.5rem); align-items:center; max-width:1100px}
+.about-photo{margin:0; border-radius:6px; overflow:hidden; aspect-ratio:1/1}
+.about-photo img{width:100%; height:100%; object-fit:cover; display:block}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}.about-photo{max-width:320px}}
 .photo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; padding:0 clamp(16px,4vw,48px); max-width:1280px; margin:2.4rem auto 0}
 .photo-grid figure{margin:0; overflow:hidden; aspect-ratio:3/2; border-radius:4px}
 .photo-grid img{width:100%; height:100%; object-fit:cover; display:block}
@@ -348,7 +352,9 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
 
 <!-- 02 · ABOUT -->
 <section id="about" class="about">
-  <div class="wrap wrap-narrow">
+  <div class="wrap about-grid">
+    <figure class="about-photo reveal"><img src="images/pruthvi.jpg" alt="Pruthvi Kalyandurg in a greenhouse among plants" width="800" height="800"></figure>
+    <div class="about-text">
     <div class="tag">About</div>
     <h2 class="reveal">I study how plants defend themselves, and I build with what I find.</h2>
     <p class="reveal d1">
@@ -357,6 +363,7 @@ footer{border-top:1px solid var(--line); padding:2.4rem clamp(1.5rem,4vw,3rem); 
     <p class="reveal d2">
       What keeps me hooked is how precise living things already are. A plant can recognise a threat and switch off exactly the genes it needs to. I think we should be using that kind of precision instead of toxic chemicals, and that is what I am working on now with my startup.
     </p>
+    </div>
   </div>
 </section>
 
